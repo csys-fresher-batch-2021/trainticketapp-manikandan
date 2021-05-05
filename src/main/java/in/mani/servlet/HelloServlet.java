@@ -1,4 +1,4 @@
-package app;
+package in.mani.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;

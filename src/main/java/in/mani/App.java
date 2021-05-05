@@ -1,4 +1,4 @@
-package app;
+package in.mani;
 
 public class App {
 
