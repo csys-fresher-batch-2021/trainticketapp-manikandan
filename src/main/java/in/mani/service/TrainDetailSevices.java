@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TrainDetailSevices {
+	
+	private TrainDetailSevices() {
+	//Default Constructor
+	}
 
 	private static Map<Long, String> trainList = new HashMap<>();
 	// Default adding the Train Name and Train Number

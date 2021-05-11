@@ -1,7 +1,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.time.LocalDate"%>
 
-<html>
+<html lang="en">
 <head>
 <title>Train Ticket App</title>
 </head>

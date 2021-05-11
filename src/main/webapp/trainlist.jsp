@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Train List</title>
@@ -21,7 +21,7 @@ table, td, th {
 		<h1>List of Trains</h1>
 		<%
 		Map<Long, String> trainList = TrainDetailSevices.getAllTrainList();
-				Map<String, Integer> trainClass = TrainDetailSevices.getAllTrainClass();
+		Map<String, Integer> trainClass = TrainDetailSevices.getAllTrainClass();
 		%>
 		<h3>
 			<%
@@ -29,13 +29,14 @@ table, td, th {
 			%>
 		</h3>
 		<table class="table table-bordered">
+			<caption>Train List</caption>
 			<thead>
 				<tr>
-					<th>SI.No</th>
-					<th>Train No</th>
-					<th>Train Name</th>
-					<th>Class</th>
-					<th>Fare(Rs./-)</th>
+					<th id="siNo">SI.No</th>
+					<th id="trainNo">Train No</th>
+					<th id="trainName">Train Name</th>
+					<th id="class">Class</th>
+					<th id="fare">Fare(Rs./-)</th>
 				</tr>
 			</thead>
 			<tbody>
