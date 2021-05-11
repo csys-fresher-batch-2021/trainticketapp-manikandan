@@ -2,15 +2,16 @@ package in.mani.service;
 
 import static org.junit.Assert.*;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 
-public class TrainDetailsTest {
+public class TrainDetailServiceTest {
 
 	@Test
 	public void testTrainDetails() {
-		HashMap<Long, HashMap<String, Integer>> trainList = TrainDetails.displayTrainDetails();
+		Map<Long, String> trainList = TrainDetailSevices.getAllTrainList();
 		assertEquals(3, trainList.size());
 	}
+
 }
