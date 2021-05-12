@@ -10,7 +10,7 @@ public class TrainDetailServiceTest {
 
 	@Test
 	public void testTrainDetails() {
-		Map<Long, String> trainList = TrainDetailSevices.getAllTrainList();
+		Map<Integer,String> trainList = TrainDetailSevices.getAllTrainList();
 		assertEquals(3, trainList.size());
 	}
 

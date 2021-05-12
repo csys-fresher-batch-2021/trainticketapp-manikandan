@@ -20,7 +20,7 @@ table, td, th {
 	<main class="container-fluid">
 		<h1>List of Trains</h1>
 		<%
-		Map<Long, String> trainList = TrainDetailSevices.getAllTrainList();
+		Map<Integer, String> trainList = TrainDetailSevices.getAllTrainList();
 		Map<String, Integer> trainClass = TrainDetailSevices.getAllTrainClass();
 		%>
 		<h3>
@@ -42,17 +42,13 @@ table, td, th {
 			<tbody>
 				<%
 				int i = 0;
-				for (long trainNumber : trainList.keySet()) {
+				for (int trainNumber : trainList.keySet()) {
 					i++;
 				%>
 				<tr>
 					<td rowspan=4><%=i%></td>
 					<td rowspan=4><%=trainNumber%></td>
-					<td rowspan=4>
-						<%
-						out.println(trainList.get(trainNumber));
-						%>
-					</td>
+					<td rowspan=4><%=trainList.get(trainNumber)%></td>
 				</tr>
 
 				<%
@@ -60,11 +56,7 @@ table, td, th {
 				%>
 				<tr>
 					<td><%=trainClassType%></td>
-					<td>
-						<%
-						out.println(trainClass.get(trainClassType));
-						%>
-					</td>
+					<td><%=trainClass.get(trainClassType)%></td>
 					<%
 					}
 					%>

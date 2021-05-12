@@ -9,12 +9,12 @@ public class TrainDetailSevices {
 	//Default Constructor
 	}
 
-	private static Map<Long, String> trainList = new HashMap<>();
+	private static Map<Integer, String> trainList = new HashMap<>();
 	// Default adding the Train Name and Train Number
 	static {
-		trainList.put(12613L, "TEJAS EXPRESS");
-		trainList.put(12661L, "POTHIGAI SUPERFAST EXPRESS");
-		trainList.put(12331L, "COIMBATORE EXPRESS");
+		trainList.put(12613, "TEJAS EXPRESS");
+		trainList.put(12661, "POTHIGAI SUPERFAST EXPRESS");
+		trainList.put(12331, "COIMBATORE EXPRESS");
 	}
 	private static Map<String, Integer> classListPrice = new HashMap<>();
 	// Default adding the Class and Fare
@@ -27,7 +27,7 @@ public class TrainDetailSevices {
 	/**
 	 * This Method is used to get all Train List
 	 */
-	public static Map<Long, String> getAllTrainList() {
+	public static Map<Integer,String> getAllTrainList() {
 		return trainList;
 	}
 
@@ -37,4 +37,5 @@ public class TrainDetailSevices {
 	public static Map<String, Integer> getAllTrainClass() {
 		return classListPrice;
 	}
+	
 }
