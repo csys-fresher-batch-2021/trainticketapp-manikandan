@@ -3,6 +3,9 @@ package in.mani.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import in.mani.exception.TrainValidationException;
+import in.mani.validation.TrainValidator;
+
 public class TrainDetailSevices {
 	
 	private TrainDetailSevices() {
@@ -22,6 +25,22 @@ public class TrainDetailSevices {
 		classListPrice.put("First Class", 760);
 		classListPrice.put("Sleeper", 295);
 		classListPrice.put("Second Sitting", 180);
+	}
+	
+	/**
+	 * This Method is used to add Trains
+	 * @param trainNumber
+	 * @param trainName
+	 */
+	public static void addTrains(int trainNumber, String trainName) {
+		try {
+			TrainValidator.validateTrainDetails(trainNumber, trainName);
+			trainList.put(trainNumber, trainName);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			throw new TrainValidationException(e.getMessage());
+		}
 	}
 
 	/**
