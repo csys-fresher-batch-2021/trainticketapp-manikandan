@@ -5,28 +5,41 @@
 <%@page import="in.mani.service.TrainDetailSevices"%>
 <%@page import="in.mani.service.TrainDetailSevices"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Train List</title>
-<style type="text/css">
-table, td, th {
-	text-align: center;
+<title>Search Train</title>
+<style>
+input{
+	width:250px;
 }
 </style>
 </head>
 <body>
-	<%
+<%
 	String loggedInAdminId = (String) session.getAttribute("LOGGED_IN_ADMIN");
 	String loggedInUser = (String) session.getAttribute("LOGGED_IN_USER");
 	String role = (String) session.getAttribute("ROLE");
 	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<h3 class="text-center">List of Trains</h3>
-		<jsp:include page="message.jsp"></jsp:include>
+	
+	<div class="card bg-light">
+			<article class="card-body mx-auto" style="max-width: 400px;">
+				<h4 class="card-title mt-3 text-center">SEARCH TRAIN</h4>
+				<p class="text-center"><jsp:include page="message.jsp"></jsp:include></p>
+				<form action="SearchTrainServlet">
+			<div class="form-group input-group">
+			<input type="text" name="keyword" placeholder="Train Name/source/Destination" autocomplete="off" required><br />
+			<div class="input-group-prepend">
+			<button type="submit" class="btn btn-secondary">Search</button>
+			</div>
+		</div>
+		</form>
+		</article>
+		</div>
 		<table class="table table-bordered">
 			<caption>Train List</caption>
 			<thead>
@@ -96,7 +109,6 @@ table, td, th {
 				<%
 				}}
 				%>
-				
 			</tbody>
 		</table>
 	</main>
