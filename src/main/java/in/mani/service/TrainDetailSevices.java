@@ -1,60 +1,77 @@
 package in.mani.service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import in.mani.exception.TrainValidationException;
+import in.mani.converter.TrainConverter;
+import in.mani.dao.TrainDAO;
+import in.mani.dto.TrainDTO;
+import in.mani.exception.DBException;
+import in.mani.exception.ServiceException;
+import in.mani.model.Train;
+import in.mani.util.NameValidation;
+import in.mani.validation.TrainNumberValidator;
 import in.mani.validation.TrainValidator;
 
 public class TrainDetailSevices {
-	
+
 	private TrainDetailSevices() {
-	//Default Constructor
+		// Default Constructor
 	}
 
-	private static Map<Integer, String> trainList = new HashMap<>();
-	// Default adding the Train Name and Train Number
-	static {
-		trainList.put(12613, "TEJAS EXPRESS");
-		trainList.put(12661, "POTHIGAI SUPERFAST EXPRESS");
-		trainList.put(12331, "COIMBATORE EXPRESS");
-	}
-	private static Map<String, Integer> classListPrice = new HashMap<>();
-	// Default adding the Class and Fare
-	static {
-		classListPrice.put("First Class", 760);
-		classListPrice.put("Sleeper", 295);
-		classListPrice.put("Second Sitting", 180);
-	}
-	
 	/**
 	 * This Method is used to add Trains
-	 * @param trainNumber
-	 * @param trainName
+	 * 
+	 * @param trainDTO
 	 */
-	public static void addTrains(int trainNumber, String trainName) {
+	public static void addTrain(TrainDTO trainDTO) {
 		try {
-			TrainValidator.validateTrainDetails(trainNumber, trainName);
-			trainList.put(trainNumber, trainName);
-		}
-		catch (Exception e) {
+			TrainValidator.isValidTrainDetails(trainDTO);
+
+			Train train = TrainConverter.toTrain(trainDTO);
+			TrainDAO trainDAO = TrainDAO.getInstance();
+			trainDAO.addTrain(train);
+		} catch (Exception e) {
 			e.printStackTrace();
-			throw new TrainValidationException(e.getMessage());
+			throw new ServiceException(e.getMessage());
 		}
 	}
 
 	/**
-	 * This Method is used to get all Train List
+	 * This Method is Used to fetch All Trains
+	 * 
+	 * @return
 	 */
-	public static Map<Integer,String> getAllTrainList() {
-		return trainList;
+	public static List<TrainDTO> getTrains() {
+		TrainDAO trainDAO = TrainDAO.getInstance();
+		List<Train> allTrains = trainDAO.getAllTrains();
+		return TrainConverter.toTrainDTO(allTrains);
 	}
 
-	/**
-	 * This Method is used to get all Train Class
-	 */
-	public static Map<String, Integer> getAllTrainClass() {
-		return classListPrice;
+	public static void deleteTrain(int trainNumber, String trainName) {
+		try {
+			TrainNumberValidator.isValidtrainNumber(trainNumber);
+			NameValidation.isValidName(trainName);
+			TrainDAO trainDAO = TrainDAO.getInstance();
+			trainDAO.deleteTrain(trainNumber, trainName);
+		} catch (Exception e) {
+			throw new ServiceException(e.getMessage());
+		}
 	}
-	
+
+	public static List<TrainDTO> searchTrainByKeyword(String keyword) {
+
+		List<Train> trains = null;
+
+		try {
+			TrainDAO trainDAO = TrainDAO.getInstance();
+			trains = trainDAO.searchTrainByKeyword(keyword);
+			TrainValidator.isTrainExists(trains);
+
+		} catch (DBException e) {
+			throw new ServiceException(e.getMessage());
+		}
+
+		return TrainConverter.toTrainDTO(trains);
+	}
+
 }

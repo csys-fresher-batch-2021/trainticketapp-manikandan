@@ -1,9 +1,13 @@
 package in.mani.validation;
 
-import java.util.Map;
+import java.util.List;
 
-import in.mani.exception.TrainValidationException;
-import in.mani.service.TrainDetailSevices;
+import in.mani.dao.TrainDAO;
+import in.mani.dto.TrainDTO;
+import in.mani.exception.ValidationException;
+import in.mani.model.Train;
+import in.mani.util.NameValidation;
+import in.mani.util.NumberValidator;
 
 public class TrainValidator {
 
@@ -14,22 +18,42 @@ public class TrainValidator {
 	/**
 	 * This Method Validates the Train Details
 	 * 
-	 * @param trainNumber
-	 * @param trainName
+	 * @param trainDTO
 	 */
-	public static void validateTrainDetails(int trainNumber, String trainName) {
-		Map<Integer, String> trainList = TrainDetailSevices.getAllTrainList();
-		for (int trainNo : trainList.keySet()) {
-			if (trainNumber == trainNo) {
-				throw new TrainValidationException("Train Number already Exists");
+	public static void isValidTrainDetails(TrainDTO trainDTO) {
+
+		try {
+			TrainNumberValidator.isValidtrainNumber(trainDTO.getTrainNumber());
+			NameValidation.isValidName(trainDTO.getTrainName());
+			NameValidation.isValidName(trainDTO.getSource());
+			NameValidation.isValidName(trainDTO.getDestination());
+			NumberValidator.isValidNumber(trainDTO.getClassTypeFare());
+			NumberValidator.isValidNumber(trainDTO.getClassTypeAvailability());
+			TrainValidator.isSameTrain(trainDTO);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ValidationException(e.getMessage());
+		}
+	}
+
+	public static void isSameTrain(TrainDTO trainDTO) {
+		TrainDAO trainDAO = TrainDAO.getInstance();
+		List<Train> allTrains = trainDAO.getAllTrains();
+		for (Train trainObj : allTrains) {
+			if (trainDTO.getTrainNumber().equals(trainObj.getTrainNumber())) {
+				throw new ValidationException("Train Number Already Exists");
 			}
-			String noSpaceTrainName = trainList.get(trainNo).replaceAll("\\s", "");
-			if (trainName.trim().equalsIgnoreCase((noSpaceTrainName))) {
-				throw new TrainValidationException("Train Name already Exists");
-			}
-			if (trainName == null || trainName.trim().equals("")) {
-				throw new TrainValidationException("Invalid Train Name");
+			if (trainDTO.getTrainName().equals(trainObj.getTrainName())) {
+				throw new ValidationException("Train Name Already Exists");
 			}
 		}
 	}
+
+	public static void isTrainExists(List<Train> trains) {
+		if (trains.isEmpty()) {
+			throw new ValidationException("NO Matching Train Found");
+		}
+
+	}
+
 }
