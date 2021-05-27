@@ -18,7 +18,7 @@ public class AdminLogoutServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
- 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("LOGGED_IN_ADMIN");

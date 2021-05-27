@@ -46,20 +46,11 @@ String role = (String) session.getAttribute("ROLE");
 				<%
 				}
 				%>
-				<!-- <li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="dropdownId"
-					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-					<div class="dropdown-menu" aria-labelledby="dropdownId">
-						<a class="dropdown-item" href="#">Action 1</a> <a
-							class="dropdown-item" href="#">Action 2</a>
-					</div></li> -->
 			</ul>
 			<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 				<%
 				if (loggedInAdminId == null && loggedInUser == null) {
 				%>
-				<!-- <li class="nav-item active"><a class="nav-link"
-					href="adminLogin.jsp">Login</a></li> -->
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="dropdownId"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LOGIN</a>

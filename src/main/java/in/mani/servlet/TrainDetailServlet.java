@@ -24,6 +24,7 @@ public class TrainDetailServlet extends HttpServlet {
 	/**
 	 * This Servlet is used to diplay Train Details
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -31,7 +32,6 @@ public class TrainDetailServlet extends HttpServlet {
 		request.setAttribute("TRAIN_LIST", trains);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("trainList.jsp");
 		requestDispatcher.forward(request, response);
-		System.out.println(trains);
 	}
 
 }

@@ -54,7 +54,7 @@ public class UserConverter {
 	 * @return
 	 */
 	public static List<UserDTO> toUserDTO(List<User> users) {
-		List<UserDTO> dtoList = new ArrayList<UserDTO>();
+		List<UserDTO> dtoList = new ArrayList<>();
 		for (User user : users) {
 			UserDTO dto = toUserDTO(user);
 			dtoList.add(dto);
@@ -69,7 +69,7 @@ public class UserConverter {
 	 * @return
 	 */
 	public static List<User> toUser(List<UserDTO> users) {
-		List<User> userList = new ArrayList<User>();
+		List<User> userList = new ArrayList<>();
 		for (UserDTO user : users) {
 			User dto = toUser(user);
 			userList.add(dto);

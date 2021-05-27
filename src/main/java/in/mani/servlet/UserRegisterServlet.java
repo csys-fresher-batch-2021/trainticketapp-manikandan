@@ -21,7 +21,7 @@ public class UserRegisterServlet extends HttpServlet {
     public UserRegisterServlet() {
         super();
     }
-
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String firstName=request.getParameter("firstName");
 		String lastName=request.getParameter("lastName");

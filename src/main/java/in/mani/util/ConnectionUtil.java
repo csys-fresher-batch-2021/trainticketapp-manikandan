@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import in.mani.exception.DBException;
+
 import java.sql.Connection;
 
 public class ConnectionUtil {
@@ -32,7 +34,7 @@ public class ConnectionUtil {
 			connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to get the database connection");
+			throw new DBException("Unable to get the database connection");
 		}
 
 		return connection;
@@ -49,7 +51,7 @@ public class ConnectionUtil {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to close the connection");
+			throw new DBException("Unable to close the connection");
 		}
 	}
 
@@ -67,7 +69,7 @@ public class ConnectionUtil {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to close the connection");
+			throw new DBException("Unable to close the connection");
 		}
 	}
 }

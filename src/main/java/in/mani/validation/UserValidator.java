@@ -36,7 +36,6 @@ public class UserValidator {
 	public static void isSameUser(UserDTO userDTO) {
 		UserRegisterDAO userDAO = UserRegisterDAO.getInstance();
 		List<User> allUsers = userDAO.getAllUsers();
-		System.out.println(allUsers);
 		for (User userObj : allUsers) {
 			if (userDTO.getEmail().equals(userObj.getEmail())) {
 				throw new ValidationException("Email ID Already Registered");

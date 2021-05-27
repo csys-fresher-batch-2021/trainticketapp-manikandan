@@ -19,7 +19,7 @@
 				<form action="UserRegisterServlet" method="POST">
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-user"></i>
+							<span class="input-group-text"> <em class="fa fa-user"></em>
 							</span>
 						</div>
 						<input name="firstName" class="form-control"
@@ -30,7 +30,7 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-envelope"></i>
+							<span class="input-group-text"> <em class="fa fa-envelope"></em>
 							</span>
 						</div>
 						<input name="email" class="form-control"
@@ -40,7 +40,7 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-phone"></i>
+							<span class="input-group-text"> <em class="fa fa-phone"></em>
 							</span>
 						</div>
 						<input class="form-control" value="+91" type="text" readonly>
@@ -51,7 +51,7 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-user"></i>
+							<span class="input-group-text"> <em class="fa fa-user"></em>
 							</span>
 						</div>
 						<input name="userName" class="form-control"
@@ -61,7 +61,7 @@
 					<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-lock"></i>
+							<span class="input-group-text"> <em class="fa fa-lock"></em>
 							</span>
 						</div>
 						<input name="newPassword" class="form-control"
@@ -71,7 +71,7 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <i class="fa fa-lock"></i>
+							<span class="input-group-text"> <em class="fa fa-lock"></em>
 							</span>
 						</div>
 						<input name="confirmPassword" class="form-control"

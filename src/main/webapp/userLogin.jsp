@@ -19,7 +19,7 @@
 			<form action="UserLoginServlet" method="POST">
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text"> <i class="fa fa-user"></i>
+						<span class="input-group-text"> <em class="fa fa-user"></em>
 						</span>
 					</div>
 					<input name="userName" class="form-control"
@@ -28,7 +28,7 @@
 				</div>
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text"> <i class="fa fa-lock"></i>
+						<span class="input-group-text"> <em class="fa fa-lock"></em>
 						</span>
 					</div>
 					<input name="password" class="form-control"
