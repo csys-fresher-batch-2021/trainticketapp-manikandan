@@ -55,5 +55,11 @@ public class TrainValidator {
 		}
 
 	}
+	public static void isTrainExistsToBook(List<Train> trains) {
+		if (trains.isEmpty()) {
+			throw new ValidationException("CURRENTLY NO TRAINS AVAILABLE FOR GIVEN PLACES");
+		}
+
+	}
 
 }

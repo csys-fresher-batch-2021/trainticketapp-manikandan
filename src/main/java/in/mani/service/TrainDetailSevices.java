@@ -74,4 +74,18 @@ public class TrainDetailSevices {
 		return TrainConverter.toTrainDTO(trains);
 	}
 
+	public static List<TrainDTO> searchTrainByPlaces(String source, String destination) {
+		List<Train> trains = null;
+
+		try {
+			TrainDAO trainDAO = TrainDAO.getInstance();
+			trains = trainDAO.searchTrainByPlaces(source, destination);
+			TrainValidator.isTrainExistsToBook(trains);
+
+		} catch (DBException e) {
+			throw new ServiceException(e.getMessage());
+		}
+
+		return TrainConverter.toTrainDTO(trains);
+	}
 }

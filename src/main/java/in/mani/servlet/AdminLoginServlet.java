@@ -30,7 +30,7 @@ public class AdminLoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_ADMIN", adminId);
 			session.setAttribute("ROLE", "ADMIN");
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("addTrains.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			String errorMessage=e.getMessage();

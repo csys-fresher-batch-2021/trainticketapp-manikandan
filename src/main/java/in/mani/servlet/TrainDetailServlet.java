@@ -30,7 +30,7 @@ public class TrainDetailServlet extends HttpServlet {
 
 		List<TrainDTO> trains = TrainDetailSevices.getTrains();
 		request.setAttribute("TRAIN_LIST", trains);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("trainList.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("trainlist.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
