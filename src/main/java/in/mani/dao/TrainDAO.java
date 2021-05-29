@@ -204,4 +204,65 @@ public class TrainDAO {
 
 	}
 
+	public List<Train> searchTrainByPlaces(String trainSource, String trainDestination) throws DBException {
+		final List<Train> trains = new ArrayList<>();
+		Connection connection = null;
+		ResultSet result = null;
+		PreparedStatement pst = null;
+
+		try {
+			// Get the Connection
+
+			connection = ConnectionUtil.getConnection();
+
+			// Query Statement
+
+			String sql = "select * from trains where train_source ILIKE ? and train_destination ILIKE ?;";
+
+			// Executing Query Statement
+
+			pst = connection.prepareStatement(sql);
+
+			pst.setString(1, "%" + trainSource + "%");
+			pst.setString(2, "%" + trainDestination + "%");
+
+			result = pst.executeQuery();
+
+			while (result.next()) {
+
+				Train train = new Train();
+				int trainNumber = result.getInt("trainnumber");
+				String trainName = result.getString("trainname");
+				String source = result.getString("train_source");
+				String destination = result.getString("train_destination");
+				Time sourceTime = result.getTime("source_time");
+				Time destinationTime = result.getTime("destination_time");
+				String classType = result.getString("class_type");
+				int fare = result.getInt("fare");
+				int availability = result.getInt("availability");
+
+				train.setTrainNumber(trainNumber);
+				train.setTrainName(trainName);
+				train.setSource(source);
+				train.setDestination(destination);
+				train.setSourceTime(sourceTime);
+				train.setDestinationTime(destinationTime);
+				train.setClassType(classType);
+				train.setClassTypeFare(fare);
+				train.setClassTypeAvailability(availability);
+
+				trains.add(train);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Unable to Fetch Trains");
+		} finally {
+			// Closing the Connection
+			ConnectionUtil.close(pst, connection, result);
+		}
+		return trains;
+
+	}
+
 }

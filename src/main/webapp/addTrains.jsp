@@ -16,45 +16,45 @@
 		<form action="AddTrainServlet">
 			<div class="form-group input-group">
 			<div class="input-group-prepend">
-			<span class="input-group-text">TRAIN NUMBER</span>
+			<span class="input-group-text" style="width:160px;">TRAIN NUMBER</span>
 			</div>
-			<input type="number" name="trainNumber" placeholder="Train Number" autocomplete="off" required><br />
+			<input type="number" name="trainNumber" style="width:160px;" placeholder="Train Number" autocomplete="off" required><br />
 		</div>
 		<div class="form-group input-group">
 			<div class="input-group-prepend">
-			<span class="input-group-text">TRAIN NAME</span>
+			<span class="input-group-text" style="width:160px;">TRAIN NAME</span>
 			</div>
-			<input type="text" name="trainName" placeholder="Train Name" autocomplete="off" required><br />
+			<input type="text" name="trainName" style="width:160px;" placeholder="Train Name" autocomplete="off" required><br />
 		</div>
 		<div class="form-group input-group">
 			<div class="input-group-prepend">
-			<span class="input-group-text">SOURCE</span>
+			<span class="input-group-text" style="width:160px;">SOURCE</span>
 			</div>
-			<input type="text" name="source" placeholder="Source" autocomplete="off" required><br />
+			<input type="text" name="source" style="width:160px;" placeholder="Source" autocomplete="off" required><br />
 		</div>
 		<div class="form-group input-group">
 			<div class="input-group-prepend">
-			<span class="input-group-text">DESTINATION</span>
+			<span class="input-group-text" style="width:160px;">DESTINATION</span>
 			</div>
-			<input type="text" name="destination" placeholder="Destination" autocomplete="off" required><br />
+			<input type="text" name="destination" style="width:160px;" placeholder="Destination" autocomplete="off" required><br />
 		</div>
 		<div class="form-group input-group">
 			<div class="input-group-prepend">
-			<span class="input-group-text">DEPARTURE TIME</span>
+			<span class="input-group-text" style="width:160px;">DEPARTURE TIME</span>
 			</div>
-			<input type="time" name="sourcetime" autocomplete="off" required><br />
+			<input type="time" name="sourcetime" style="width:160px;" autocomplete="off" required><br />
 		</div>
 		<div class="form-group input-group">
 			<div class="input-group-prepend">
-			<span class="input-group-text">ARRIVAL TIME</span>
+			<span class="input-group-text" style="width:160px;">ARRIVAL TIME</span>
 			</div>
-			<input type="time" name="destinationtime" autocomplete="off" required><br />
+			<input type="time" name="destinationtime" style="width:160px;" autocomplete="off" required><br />
 		</div>
 		<div class="form-group input-group">
 			<div class="input-group-prepend">
-			<span class="input-group-text">CLASS TYPE</span>
+			<span class="input-group-text" style="width:160px;">CLASS TYPE</span>
 			</div>
-			<select name="classType">
+			<select name="classType" style="width:160px;">
     		<option value="FirstClass">First Class</option>
     		<option value="Sleeper">Sleeper</option>
    			<option value="SecondSitting">Second Sitting</option>
@@ -62,15 +62,15 @@
 		</div>
 		<div class="form-group input-group">
 			<div class="input-group-prepend">
-			<span class="input-group-text">FARE</span>
+			<span class="input-group-text" style="width:160px;">FARE</span>
 			</div>
-			<input type="number" name="classTypeFare" placeholder="Fare" autocomplete="off" required><br />
+			<input type="number" name="classTypeFare" style="width:160px;" placeholder="Fare" autocomplete="off" required><br />
 		</div>
 		<div class="form-group input-group">
 			<div class="input-group-prepend">
-			<span class="input-group-text">AVAILABILITY</span>
+			<span class="input-group-text" style="width:160px;">AVAILABILITY</span>
 			</div>
-			<input type="number" name="classTypeAvailability" placeholder="Availability" autocomplete="off" required><br />
+			<input type="number" name="classTypeAvailability" style="width:160px;" placeholder="Availability" autocomplete="off" required><br />
 		</div>
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary btn-block">Submit</button>

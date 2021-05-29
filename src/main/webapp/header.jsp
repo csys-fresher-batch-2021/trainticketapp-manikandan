@@ -23,7 +23,7 @@ String role = (String) session.getAttribute("ROLE");
 
 <header>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Train Ticket App</a>
+		<a class="navbar-brand" href="#">TRAIN TICKET APP</a>
 		<button class="navbar-toggler d-lg-none" type="button"
 			data-toggle="collapse" data-target="#collapsibleNavId"
 			aria-controls="collapsibleNavId" aria-expanded="false"
@@ -32,17 +32,20 @@ String role = (String) session.getAttribute("ROLE");
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavId">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<%
+				if (loggedInAdminId == null || loggedInUser != null) {
+				%>
 				<li class="nav-item active"><a class="nav-link"
-					href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href=TrainDetailServlet>Trains</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="searchTrain.jsp">Search Train</a>
+					href="index.jsp">HOME<span class="sr-only">(current)</span></a></li>
+					<%
+				}
+				%>
+				<li class="nav-item active"><a class="nav-link" href="searchTrain.jsp">SEARCH TRAIN</a>
 				</li>
 				<%
 				if (loggedInAdminId != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 				%>
-				<li class="nav-item"><a class="nav-link" href="addTrains.jsp">Add
-						Trains</a></li>
+				<li class="nav-item active"><a class="nav-link" href="addTrains.jsp">ADD TRAIN</a></li>
 				<%
 				}
 				%>
@@ -51,28 +54,28 @@ String role = (String) session.getAttribute("ROLE");
 				<%
 				if (loggedInAdminId == null && loggedInUser == null) {
 				%>
-				<li class="nav-item dropdown"><a
+				<li class="nav-item dropdown active"><a
 					class="nav-link dropdown-toggle" href="#" id="dropdownId"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LOGIN</a>
 					<div class="dropdown-menu" aria-labelledby="dropdownId">
 						<a class="dropdown-item" href="adminLogin.jsp">ADMIN LOGIN</a> <a
 							class="dropdown-item" href="userLogin.jsp">USER LOGIN</a>
 					</div></li>
-				<li class="nav-item"><a class="nav-link" href="registerUser.jsp">REGISTER</a>
+				<li class="nav-item active"><a class="nav-link" href="registerUser.jsp">REGISTER</a>
 				</li>
 				<%
 				} else {
 					if(loggedInAdminId != null){
 				%>
-				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInAdminId%></a>
+				<li class="nav-item active"><a class="nav-link" href="#">Welcome <%=loggedInAdminId%></a>
 				</li>
-				<li class="nav-item"><a class="nav-link"
+				<li class="nav-item active"><a class="nav-link"
 					href="AdminLogoutServlet">LOGOUT</a></li>
 				<%}
 				if(loggedInUser != null){%>
-				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInUser%></a>
+				<li class="nav-item active"><a class="nav-link" href="#">Welcome <%=loggedInUser%></a>
 				</li>
-				<li class="nav-item"><a class="nav-link"
+				<li class="nav-item active"><a class="nav-link"
 					href="UserLogoutServlet">LOGOUT</a></li>
 				<%
 				}
