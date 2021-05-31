@@ -28,6 +28,7 @@ public class UserRegisterServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		String userName=request.getParameter("userName");
 		String newPassword=request.getParameter("newPassword");
+		String confirmPassword=request.getParameter("confirmPassword");
 		try {
 			Long mobileNumber=Long.parseLong(request.getParameter("mobileNumber"));
 			UserDTO userDTO=UserDTO.getInstance();
@@ -37,7 +38,7 @@ public class UserRegisterServlet extends HttpServlet {
 			userDTO.setMobileNumber(mobileNumber);
 			userDTO.setUserName(userName);
 			userDTO.setNewpassword(newPassword);
-			UserRegisterService.registerUser(userDTO);
+			UserRegisterService.registerUser(userDTO,confirmPassword);
 			String infoMessage="Successfully Registered User";
 			response.sendRedirect("registerUser.jsp?infoMessage=" + infoMessage);
 		}catch(Exception e) {

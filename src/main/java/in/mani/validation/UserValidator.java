@@ -17,9 +17,12 @@ public class UserValidator {
 		// Default Constructor
 	}
 
-	public static void isValidUser(UserDTO userDTO) {
+	public static void isValidUser(UserDTO userDTO,String confirmPassword) {
 
 		try {
+			if(!userDTO.getNewpassword().equals(confirmPassword)) {
+				throw new ValidationException("Password Not Matches");
+			}
 			NameValidation.isValidName(userDTO.getFirstName());
 			NameValidation.isValidName(userDTO.getLastName());
 			EmailValidation.isValidEmail(userDTO.getEmail());

@@ -63,6 +63,7 @@ public class TrainDetailSevices {
 		List<Train> trains = null;
 
 		try {
+			NameValidation.isValidName(keyword);
 			TrainDAO trainDAO = TrainDAO.getInstance();
 			trains = trainDAO.searchTrainByKeyword(keyword);
 			TrainValidator.isTrainExists(trains);
@@ -78,6 +79,8 @@ public class TrainDetailSevices {
 		List<Train> trains = null;
 
 		try {
+			NameValidation.isValidName(destination);
+			NameValidation.isValidName(source);
 			TrainDAO trainDAO = TrainDAO.getInstance();
 			trains = trainDAO.searchTrainByPlaces(source, destination);
 			TrainValidator.isTrainExistsToBook(trains);
