@@ -25,7 +25,6 @@ input{
 	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-	
 	<div class="card bg-light">
 			<article class="card-body mx-auto" style="max-width: 400px;">
 				<h4 class="card-title mt-3 text-center">SEARCH TRAIN</h4>
@@ -40,6 +39,8 @@ input{
 		</form>
 		</article>
 		</div>
+		<%List<TrainDTO> trains=(List<TrainDTO>)request.getAttribute("TRAIN_LIST");
+		if(trains!=null){ %>
 		<table class="table table-bordered">
 			<caption>Train List</caption>
 			<thead>
@@ -70,8 +71,6 @@ input{
 			</thead>
 			<tbody>
 				<%
-				List<TrainDTO> trains=(List<TrainDTO>)request.getAttribute("TRAIN_LIST");
-				if(trains!=null){
 				int i = 0;
 				for (TrainDTO train : trains) {
 					i++;
@@ -107,10 +106,11 @@ input{
 				<td>ARRIVAL TIME: <%=train.getDestinationTime()%></td>
 				</tr>
 				<%
-				}}
+				}
 				%>
 			</tbody>
 		</table>
+		<%} %>
 	</main>
 </body>
 </html>

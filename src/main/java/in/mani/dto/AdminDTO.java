@@ -1,10 +1,10 @@
-package in.mani.model;
+package in.mani.dto;
 
-public class Admin {
+public class AdminDTO {
 
 	private String adminId;
 	private String password;
-
+	
 	public String getAdminId() {
 		return adminId;
 	}
@@ -21,11 +21,12 @@ public class Admin {
 		this.password = password;
 	}
 
-	public Admin() {
+
+	public AdminDTO() {
 		super();
 	}
 
-	public Admin(String adminId, String password) {
+	public AdminDTO(String adminId, String password) {
 		super();
 		this.adminId = adminId;
 		this.password = password;
@@ -35,5 +36,4 @@ public class Admin {
 	public String toString() {
 		return "Admin [adminId=" + adminId + ", password=" + password + "]";
 	}
-
 }

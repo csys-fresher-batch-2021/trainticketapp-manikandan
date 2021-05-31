@@ -11,7 +11,7 @@
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
-<body>
+<body id="setmin">
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<div class="card bg-light">
@@ -21,34 +21,42 @@
 				<form action=SearchTrainToBookServlet method="GET">
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width:135px;">SOURCE </span>
+							<span class="input-group-text" style="width: 135px;">SOURCE
+							</span>
 						</div>
 						<input name="source" class="form-control" placeholder="From"
 							autocomplete="off" type="text" required>
 					</div>
-					<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width:135px;">DESTINATION </span>
+							<span class="input-group-text" style="width: 135px;">DESTINATION
+							</span>
 						</div>
 						<input name="destination" class="form-control" placeholder="To"
 							autocomplete="off" type="text" required>
 					</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text">JOURNEY DATE
-							</span>
+							<span class="input-group-text">JOURNEY DATE </span>
 						</div>
-						<input name="journeyDate" class="form-control"
-							placeholder="Journey Date" autocomplete="off" type="date" required>
+						<input name="journeyDate" id="journeyDate" class="form-control"
+							placeholder="Journey Date" autocomplete="off" type="date"
+							required>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary btn-block">
-							Search</button>
+							Search Trains</button>
 					</div>
 				</form>
 			</article>
 		</div>
 	</main>
 </body>
+<script>
+document.getElementById("setmin").addEventListener("load", setMin());
+function setMin() {
+    let todayStr = new Date().toJSON().substr(0, 10);
+    document.querySelector("#journeyDate").setAttribute("min", todayStr);
+}
+</script>
 </html>

@@ -1,7 +1,10 @@
 package in.mani.validation;
 
+import java.util.List;
+
+import in.mani.dto.AdminDTO;
 import in.mani.exception.ValidationException;
-import in.mani.model.Admin;
+import in.mani.service.AdminServices;
 
 public class AdminLoginValidator {
 
@@ -16,15 +19,21 @@ public class AdminLoginValidator {
 	 * @param password
 	 */
 	public static void validateAdminLogin(String adminId, String password) {
-		Admin admin = new Admin();
-		if (!admin.getAdminId().equals(adminId) && !admin.getPassword().equals(password)) {
-			throw new ValidationException("Invalid Credential");
-		}
-		if (!admin.getAdminId().equals(adminId) && admin.getPassword().equals(password)) {
-			throw new ValidationException("Invalid Admin ID");
-		}
-		if (admin.getAdminId().equals(adminId) && !admin.getPassword().equals(password)) {
-			throw new ValidationException("Invalid Password");
+		List<AdminDTO> admins = AdminServices.getAdmins();
+		boolean valid = false;
+		if ((adminId != null) && (password != null)) {
+			for (AdminDTO adminDTO : admins) {
+				if (adminId.equals(adminDTO.getAdminId()) && (password.equals(adminDTO.getPassword()))) {
+					valid = true;
+					break;
+				}
+			}
+			if (!valid) {
+				throw new ValidationException("Invalid Login");
+			}
+		} else {
+			throw new ValidationException("User Name or Password should not be empty");
 		}
 	}
+
 }

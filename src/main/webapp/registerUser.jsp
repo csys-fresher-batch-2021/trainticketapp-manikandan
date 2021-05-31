@@ -12,7 +12,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<div class="card bg-light">
-			<article class="card-body mx-auto" style="max-width: 400px;">
+			<article class="card-body mx-auto" style="max-width: 410px;">
 				<h4 class="card-title mt-3 text-center">Create Account</h4>
 				<p class="text-center">Get started with our Train Ticket App</p>
 				<p class="text-center"><jsp:include page="message.jsp"></jsp:include></p>
@@ -79,7 +79,7 @@
 							required>
 					</div>
 					<div class="form-group input-group">
-					<input type="checkbox" required>By signing up you accept
+					<input type="checkbox" required>By Creating Account you accept
 					our Terms Of Use
 				</div>
 					<!-- form-group// -->

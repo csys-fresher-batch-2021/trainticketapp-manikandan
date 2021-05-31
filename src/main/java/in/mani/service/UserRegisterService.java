@@ -20,10 +20,10 @@ public class UserRegisterService {
 	 * 
 	 * @param userDTO
 	 */
-	public static void registerUser(UserDTO userDTO) {
+	public static void registerUser(UserDTO userDTO,String confirmPassword) {
 
 		try {
-			UserValidator.isValidUser(userDTO);
+			UserValidator.isValidUser(userDTO,confirmPassword);
 			UserRegisterDAO userDAO = UserRegisterDAO.getInstance();
 			User user = UserConverter.toUser(userDTO);
 			userDAO.addUser(user);
