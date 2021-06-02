@@ -10,7 +10,7 @@ import in.mani.util.NumberValidator;
 public class FareEstimationService {
 	
 	private FareEstimationService() {
-		//Default Constructor;
+		
 	}
 
 	public static int getPrice(int trainNumber, int noOfTickets) {
