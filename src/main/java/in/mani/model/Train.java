@@ -3,6 +3,7 @@ package in.mani.model;
 import java.sql.Time;
 
 public class Train {
+	private Integer id;
 	private Integer trainNumber;
 	private String trainName;
 	private String source;
@@ -12,6 +13,14 @@ public class Train {
 	private String classType;
 	private Integer classTypeFare;
 	private Integer classTypeAvailability;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getTrainNumber() {
 		return trainNumber;
@@ -49,8 +58,8 @@ public class Train {
 		return sourceTime;
 	}
 
-	public void setSourceTime(Time sourceTime) {
-		this.sourceTime = sourceTime;
+	public void setSourceTime(Time sourcetime2) {
+		this.sourceTime = sourcetime2;
 	}
 
 	public Time getDestinationTime() {
@@ -89,9 +98,11 @@ public class Train {
 		// Zero argument Constructor
 	}
 
-	public Train(Integer trainNumber, String trainName, String source, String destination, Time sourceTime,
-			Time destinationTime, String classType, Integer classTypeFare, Integer classTypeAvailability) {
+	public Train(Integer id, Integer trainNumber, String trainName, String source, String destination,
+			Time sourceTime, Time destinationTime, String classType, Integer classTypeFare,
+			Integer classTypeAvailability) {
 		super();
+		this.id = id;
 		this.trainNumber = trainNumber;
 		this.trainName = trainName;
 		this.source = source;
@@ -105,10 +116,11 @@ public class Train {
 
 	@Override
 	public String toString() {
-		return "Train [trainNumber=" + trainNumber + ", trainName=" + trainName + ", source=" + source
+		return "TrainDTO [id=" + id + ", trainNumber=" + trainNumber + ", trainName=" + trainName + ", source=" + source
 				+ ", destination=" + destination + ", sourceTime=" + sourceTime + ", destinationTime=" + destinationTime
 				+ ", classType=" + classType + ", classTypeFare=" + classTypeFare + ", classTypeAvailability="
 				+ classTypeAvailability + "]";
 	}
+
 
 }

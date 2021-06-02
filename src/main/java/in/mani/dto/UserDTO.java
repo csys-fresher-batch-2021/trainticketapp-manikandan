@@ -1,13 +1,22 @@
 package in.mani.dto;
 
 public class UserDTO {
-
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private Long mobileNumber;
 	private String userName;
 	private String newpassword;
+
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -61,9 +70,10 @@ public class UserDTO {
 		// Default constructor
 	}
 
-	public UserDTO(String firstName, String lastName, String email, Long mobileNumber, String userName,
+	public UserDTO(Integer id, String firstName, String lastName, String email, Long mobileNumber, String userName,
 			String newpassword) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -74,9 +84,11 @@ public class UserDTO {
 
 	@Override
 	public String toString() {
-		return "UserDTO [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", mobileNumber="
-				+ mobileNumber + ", userName=" + userName + ", newpassword=" + newpassword + "]";
+		return "UserDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", mobileNumber=" + mobileNumber + ", userName=" + userName + ", newpassword=" + newpassword + "]";
 	}
+
+
 
 	private static final UserDTO instance = new UserDTO();
 

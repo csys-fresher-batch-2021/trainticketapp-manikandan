@@ -51,4 +51,12 @@ public class UserValidator {
 			}
 		}
 	}
+	
+	public static void isUserExists(User user) {
+
+		if (user.getUserName() == null) {
+			throw new ValidationException("User Does Not Exists");
+			
+		}
+	}
 }

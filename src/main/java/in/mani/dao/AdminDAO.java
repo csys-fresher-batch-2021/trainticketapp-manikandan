@@ -40,9 +40,11 @@ public class AdminDAO {
 
 				while (result.next()) {
 					Admin admin = new Admin();
+					int adminId = result.getInt("id");
 					String adminName = result.getString("admin_name");
 					String adminPassword = result.getString("admin_password");
 					
+					admin.setId(adminId);
 					admin.setAdminId(adminName);
 					admin.setPassword(adminPassword);
 

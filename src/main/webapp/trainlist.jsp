@@ -31,7 +31,7 @@ table, td, th {
 			<caption>Train List</caption>
 			<thead>
 				<tr>
-					<th id="siNo">SI.No</th>
+					<th id="trainID">SI.NO</th>
 					<th id="trainNo">Train No</th>
 					<th id="trainName">Train Name</th>
 					<th id="source">Source</th>
@@ -39,29 +39,31 @@ table, td, th {
 					<th id="classType">Class</th>
 					<th id="fare">Fare(Rs./-)</th>
 					<th id="availability">Availability</th>
-					<%if(loggedInAdminId != null || loggedInUser != null) {%>
+					<%
+					if (loggedInAdminId != null || loggedInUser != null) {
+					%>
 					<th id="action">
 						<%
-						if (loggedInAdminId != null && role != null && role.equalsIgnoreCase("ADMIN")){
+						if (loggedInAdminId != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 						%>Delete<%
-					}
-					%>
-						<%
-						if (loggedInUser != null) {
-						%>Book
+						}
+						%> <%
+ if (loggedInUser != null) {
+ %>Book
 					</th>
 					<%
-					}}
+					}
+					}
 					%>
 				</tr>
 			</thead>
 			<tbody>
 				<%
-				List<TrainDTO> trains=(List<TrainDTO>)request.getAttribute("TRAIN_LIST");
-				if(trains!=null){
-				int i = 0;
-				for (TrainDTO train : trains) {
-					i++;
+				List<TrainDTO> trains = (List<TrainDTO>) request.getAttribute("TRAIN_LIST");
+				if (trains != null) {
+					int i = 0;
+					for (TrainDTO train : trains) {
+						i++;
 				%>
 				<tr>
 					<td rowspan="2"><%=i%></td>
@@ -72,31 +74,37 @@ table, td, th {
 					<td rowspan="2"><%=train.getClassType()%></td>
 					<td rowspan="2"><%=train.getClassTypeFare()%></td>
 					<td rowspan="2"><%=train.getClassTypeAvailability()%></td>
-					<%if(loggedInAdminId != null || loggedInUser != null) {%>
+					<%
+					if (loggedInAdminId != null || loggedInUser != null) {
+					%>
 					<td rowspan="2">
 						<%
 						if (loggedInAdminId != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 						%> <a
 						href="DeleteTrainServlet?trainName=<%=train.getTrainName()%>&trainNumber=<%=train.getTrainNumber()%>"
 						class=" btn btn-danger">Delete</a> <%
-					}
-					%> <%
-					if (loggedInUser != null) {
-						%> <a
-						href="BookTicket.jsp?trainName=<%=train.getTrainName()%>&trainNumber=<%=train.getTrainNumber()%>"
+ 							}
+ 							%> <%
+ 						if (loggedInUser != null) {
+ 						%> 
+ 						<a
+						href="bookTicket.jsp?trainId=<%=train.getId()%>&trainName=<%=train.getTrainName()%>&trainNumber=<%=train.getTrainNumber()%>&source=<%=train.getSource()%>&sourceTime=<%=train.getSourceTime()%>&destination=<%=train.getDestination()%>&destinationTime=<%=train.getDestinationTime()%>&classType=<%=train.getClassType()%>"
 						class=" btn btn-primary">Book</a>
 					</td>
 					<%
-					}}
+					}
+					}
 					%>
 				</tr>
-				<tr><td>DEPARTURE TIME: <%=train.getSourceTime()%></td>
-				<td>ARRIVAL TIME: <%=train.getDestinationTime()%></td>
+				<tr>
+					<td>DEPARTURE TIME: <%=train.getSourceTime()%></td>
+					<td>ARRIVAL TIME: <%=train.getDestinationTime()%></td>
 				</tr>
 				<%
-				}}
+				}
+				}
 				%>
-				
+
 			</tbody>
 		</table>
 	</main>

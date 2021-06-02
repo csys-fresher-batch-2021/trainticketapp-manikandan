@@ -22,6 +22,7 @@ input{
 	String loggedInAdminId = (String) session.getAttribute("LOGGED_IN_ADMIN");
 	String loggedInUser = (String) session.getAttribute("LOGGED_IN_USER");
 	String role = (String) session.getAttribute("ROLE");
+	String keyword = request.getParameter("keyword");
 	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
@@ -31,7 +32,7 @@ input{
 				<p class="text-center"><jsp:include page="message.jsp"></jsp:include></p>
 				<form action="SearchTrainServlet">
 			<div class="form-group input-group">
-			<input type="text" name="keyword" placeholder="Train Name/source/Destination" autocomplete="off" required><br />
+			<input type="text" name="keyword" <%if(keyword!=null){ %> value="<%=keyword%>" <% }%> placeholder="Train Name/source/Destination" autocomplete="off" required><br />
 			<div class="input-group-prepend">
 			<button type="submit" class="btn btn-secondary">Search</button>
 			</div>
@@ -45,7 +46,7 @@ input{
 			<caption>Train List</caption>
 			<thead>
 				<tr>
-					<th id="siNo">SI.No</th>
+					<th id="siNo">SI.NO</th>
 					<th id="trainNo">Train No</th>
 					<th id="trainName">Train Name</th>
 					<th id="source">Source</th>
@@ -95,7 +96,7 @@ input{
 					%> <%
 					if (loggedInUser != null) {
 						%> <a
-						href="BookTicket.jsp?trainName=<%=train.getTrainName()%>&trainNumber=<%=train.getTrainNumber()%>"
+						href="bookTicket.jsp?trainId=<%=train.getId()%>&trainName=<%=train.getTrainName()%>&trainNumber=<%=train.getTrainNumber()%>&source=<%=train.getSource()%>&sourceTime=<%=train.getSourceTime()%>&destination=<%=train.getDestination()%>&destinationTime=<%=train.getDestinationTime()%>&classType=<%=train.getClassType()%>"
 						class=" btn btn-primary">Book</a>
 					</td>
 					<%

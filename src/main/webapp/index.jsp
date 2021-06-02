@@ -53,10 +53,14 @@
 	</main>
 </body>
 <script>
-document.getElementById("setmin").addEventListener("load", setMin());
-function setMin() {
+document.getElementById("setmin").addEventListener("load", setMinMax());
+function setMinMax() {
     let todayStr = new Date().toJSON().substr(0, 10);
     document.querySelector("#journeyDate").setAttribute("min", todayStr);
+    let endDate = new Date();
+    endDate.setDate(endDate.getDate() + 28);
+    let endDateStr = endDate.toJSON().substr(0, 10);
+    document.querySelector("#journeyDate").setAttribute("max", endDateStr);
 }
 </script>
 </html>

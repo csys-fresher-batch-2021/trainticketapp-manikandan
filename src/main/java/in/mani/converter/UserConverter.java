@@ -20,6 +20,7 @@ public class UserConverter {
 	 */
 	public static User toUser(UserDTO dto) {
 		User user = new User();
+		user.setId(dto.getId());
 		user.setFirstName(dto.getFirstName());
 		user.setLastName(dto.getLastName());
 		user.setEmail(dto.getEmail());
@@ -37,6 +38,7 @@ public class UserConverter {
 	 */
 	public static UserDTO toUserDTO(User user) {
 		UserDTO dto = new UserDTO();
+		dto.setId(user.getId());
 		dto.setFirstName(user.getFirstName());
 		dto.setLastName(user.getLastName());
 		dto.setEmail(user.getEmail());

@@ -68,6 +68,7 @@ public class UserRegisterDAO {
 
 			while (result.next()) {
 				User user = new User();
+				int userId = result.getInt("id");
 				String firstname = result.getString("firstname");
 				String lastname = result.getString("lastname");
 				String email = result.getString("email");
@@ -75,6 +76,7 @@ public class UserRegisterDAO {
 				String username = result.getString("username");
 				String password = result.getString("newpassword");
 
+				user.setId(userId);
 				user.setFirstName(firstname);
 				user.setLastName(lastname);
 				user.setEmail(email);
@@ -92,6 +94,62 @@ public class UserRegisterDAO {
 			ConnectionUtil.close(pst, connection, result);
 		}
 		return users;
+
+	}
+	
+	/**
+	 * This Method will fetch the user Details by entering username
+	 * 
+	 * @param userName
+	 * @return
+	 */
+	public User findByUserName(String userName) {
+
+		Connection connection = null;
+		ResultSet result = null;
+		PreparedStatement pst = null;
+
+		User user = new User();
+
+		try {
+
+			connection = ConnectionUtil.getConnection();
+
+			String sql = "select * from users where username= ?";
+
+			pst = connection.prepareStatement(sql);
+
+			pst.setString(1, userName);
+
+			result = pst.executeQuery();
+
+			while (result.next()) {
+				int userId = result.getInt("id");
+				String firstname = result.getString("firstname");
+				String lastname = result.getString("lastname");
+				String email = result.getString("email");
+				Long mobilenumber = result.getLong("mobilenumber");
+				String username = result.getString("username");
+				String password = result.getString("newpassword");
+
+				user.setId(userId);
+				user.setFirstName(firstname);
+				user.setLastName(lastname);
+				user.setEmail(email);
+				user.setMobileNumber(mobilenumber);
+				user.setUserName(username);
+				user.setNewpassword(password);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Unable to Get User Details");
+
+		} finally {
+			ConnectionUtil.close(pst, connection, result);
+		}
+
+		return user;
 
 	}
 }

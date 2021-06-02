@@ -28,7 +28,7 @@ public class SearchTrainServlet extends HttpServlet {
 		try {
 			List<TrainDTO> trains = TrainDetailSevices.searchTrainByKeyword(keyword);
 			request.setAttribute("TRAIN_LIST", trains);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("searchTrain.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("searchTrain.jsp?keyword=" + keyword);
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
