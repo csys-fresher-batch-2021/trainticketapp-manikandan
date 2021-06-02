@@ -3,7 +3,7 @@ package in.mani.dto;
 import java.sql.Time;
 
 public class TrainDTO {
-
+	private Integer id;
 	private Integer trainNumber;
 	private String trainName;
 	private String source;
@@ -13,6 +13,14 @@ public class TrainDTO {
 	private String classType;
 	private Integer classTypeFare;
 	private Integer classTypeAvailability;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getTrainNumber() {
 		return trainNumber;
@@ -90,9 +98,11 @@ public class TrainDTO {
 		// Zero argument Constructor
 	}
 
-	public TrainDTO(Integer trainNumber, String trainName, String source, String destination, Time sourceTime,
-			Time destinationTime, String classType, Integer classTypeFare, Integer classTypeAvailability) {
+	public TrainDTO(Integer id, Integer trainNumber, String trainName, String source, String destination,
+			Time sourceTime, Time destinationTime, String classType, Integer classTypeFare,
+			Integer classTypeAvailability) {
 		super();
+		this.id = id;
 		this.trainNumber = trainNumber;
 		this.trainName = trainName;
 		this.source = source;
@@ -106,11 +116,13 @@ public class TrainDTO {
 
 	@Override
 	public String toString() {
-		return "Train [trainNumber=" + trainNumber + ", trainName=" + trainName + ", source=" + source
+		return "TrainDTO [id=" + id + ", trainNumber=" + trainNumber + ", trainName=" + trainName + ", source=" + source
 				+ ", destination=" + destination + ", sourceTime=" + sourceTime + ", destinationTime=" + destinationTime
 				+ ", classType=" + classType + ", classTypeFare=" + classTypeFare + ", classTypeAvailability="
 				+ classTypeAvailability + "]";
 	}
+
+
 
 	private static final TrainDTO instance = new TrainDTO();
 

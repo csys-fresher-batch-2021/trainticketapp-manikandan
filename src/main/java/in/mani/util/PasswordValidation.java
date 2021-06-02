@@ -23,8 +23,8 @@ public class PasswordValidation {
 		if (!valid) {
 			throw new ValidationException("Invalid Password");
 		}
-		if (password.length() < 7 || password.length() > 15) {
-			throw new ValidationException("Invalid Password");
+		if (password.length() < 7 || password.length() > 20) {
+			throw new ValidationException("Password must contains greater than 8 Characters");
 		}
 	}
 }

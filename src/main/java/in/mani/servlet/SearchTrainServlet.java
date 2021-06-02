@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import in.mani.dto.TrainDTO;
 import in.mani.service.TrainDetailSevices;
@@ -28,7 +29,7 @@ public class SearchTrainServlet extends HttpServlet {
 		try {
 			List<TrainDTO> trains = TrainDetailSevices.searchTrainByKeyword(keyword);
 			request.setAttribute("TRAIN_LIST", trains);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("searchTrain.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("searchTrain.jsp?keyword=" + keyword);
 			requestDispatcher.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

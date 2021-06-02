@@ -170,6 +170,7 @@ public class TrainDAO {
 			while (result.next()) {
 
 				Train train = new Train();
+				int trainId = result.getInt("id");
 				int trainNumber = result.getInt("trainnumber");
 				String trainName = result.getString("trainname");
 				String source = result.getString("train_source");
@@ -180,6 +181,7 @@ public class TrainDAO {
 				int fare = result.getInt("fare");
 				int availability = result.getInt("availability");
 
+				train.setId(trainId);
 				train.setTrainNumber(trainNumber);
 				train.setTrainName(trainName);
 				train.setSource(source);
@@ -231,6 +233,7 @@ public class TrainDAO {
 			while (result.next()) {
 
 				Train train = new Train();
+				int trainId = result.getInt("id");
 				int trainNumber = result.getInt("trainnumber");
 				String trainName = result.getString("trainname");
 				String source = result.getString("train_source");
@@ -241,6 +244,7 @@ public class TrainDAO {
 				int fare = result.getInt("fare");
 				int availability = result.getInt("availability");
 
+				train.setId(trainId);
 				train.setTrainNumber(trainNumber);
 				train.setTrainName(trainName);
 				train.setSource(source);

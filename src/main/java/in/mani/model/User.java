@@ -2,12 +2,21 @@ package in.mani.model;
 
 public class User {
 
+	private Integer id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private Long mobileNumber;
 	private String userName;
 	private String newpassword;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -58,12 +67,13 @@ public class User {
 	}
 
 	public User() {
-		super();
+		// Default constructor
 	}
 
-	public User(String firstName, String lastName, String email, Long mobileNumber, String userName,
+	public User(Integer id, String firstName, String lastName, String email, Long mobileNumber, String userName,
 			String newpassword) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -74,8 +84,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", mobileNumber="
-				+ mobileNumber + ", userName=" + userName + ", newpassword=" + newpassword + "]";
+		return "UserDTO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", mobileNumber=" + mobileNumber + ", userName=" + userName + ", newpassword=" + newpassword + "]";
 	}
-
 }

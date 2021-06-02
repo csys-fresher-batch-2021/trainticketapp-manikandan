@@ -20,6 +20,7 @@ public class TrainConverter {
 	 */
 	public static Train toTrain(TrainDTO dto) {
 		Train train = new Train();
+		train.setId(dto.getId());
 		train.setTrainNumber(dto.getTrainNumber());
 		train.setTrainName(dto.getTrainName());
 		train.setSource(dto.getSource());
@@ -40,6 +41,7 @@ public class TrainConverter {
 	 */
 	public static TrainDTO toTrainDTO(Train train) {
 		TrainDTO dto = new TrainDTO();
+		dto.setId(train.getId());
 		dto.setTrainNumber(train.getTrainNumber());
 		dto.setTrainName(train.getTrainName());
 		dto.setSource(train.getSource());
