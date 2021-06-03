@@ -62,7 +62,6 @@ public class TicketDAO {
 			pst.setInt(9, ticket.getTotalPrice());
 			pst.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException("Unable to Book Train");
 		} finally {
 			ConnectionUtil.close(pst, connection);
@@ -100,7 +99,6 @@ public class TicketDAO {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException("Unable to Fetch Train Details");
 		} finally {
 			// Closing the Connection
