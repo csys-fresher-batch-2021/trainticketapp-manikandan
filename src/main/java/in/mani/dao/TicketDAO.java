@@ -3,9 +3,15 @@ package in.mani.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import in.mani.exception.DBException;
 import in.mani.model.Ticket;
@@ -20,6 +26,8 @@ public class TicketDAO {
 	public static TicketDAO getInstance() {
 		return instance;
 	}
+
+	private static final String BASE_QUERY = "select u.username as user_name, t.trainnumber as train_number, t.trainname as train_name, b.pnr_no as pnr_number ,b.booking_date, b.journey_date ,b.journey_time , b.tickets,b.passengers,b.total_price, b.status from users u, trains t , booking_details b where b.user_id = u.id and b.train_id = t.id" + "";
 	
 	/**
 	 * This Methods stores Booking Details in DataBase
@@ -54,10 +62,94 @@ public class TicketDAO {
 			pst.setInt(9, ticket.getTotalPrice());
 			pst.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException("Unable to Book Train");
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
+	}
+
+	public List<Ticket> getUserBookings(Integer userId) {
+		final List<Ticket> tickets = new ArrayList<>();
+
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet result = null;
+
+		try { 
+			// Get the Connection
+
+			connection = ConnectionUtil.getConnection();
+
+			// Query Statement
+
+			String sql = BASE_QUERY + " and u.id= ?" + "order by b.status asc";
+			// Executing Query Statement
+
+			pst = connection.prepareStatement(sql);
+
+			pst.setInt(1, userId);
+
+			result = pst.executeQuery();
+
+			while (result.next()) {
+
+				Ticket ticket = toRow(result);
+
+				tickets.add(ticket);
+			}
+
+		} catch (SQLException e) {
+			throw new DBException("Unable to Fetch Train Details");
+		} finally {
+			// Closing the Connection
+			ConnectionUtil.close(pst, connection,result);
+		}
+
+		return tickets;
+	}
+	
+	/**
+	 * This Method get th input from the Database and store in the ticket object
+	 * @param result
+	 * @return
+	 * @throws SQLException
+	 */
+	private Ticket toRow(ResultSet result) throws SQLException {
+		Ticket ticket = new Ticket();
+		Train train = new Train();
+		User user = new User();
+		String name = result.getString("user_name");
+		Integer trainNumber = result.getInt("train_number");
+		String trainName = result.getString("train_name");
+		Integer pnrNumber = result.getInt("pnr_number");
+		Timestamp bookingDate = result.getTimestamp("booking_date");
+		LocalDateTime bDate = bookingDate.toLocalDateTime();
+		Date date = result.getDate("journey_date");
+		LocalDate journeyDate = date.toLocalDate();
+		Time time = result.getTime("journey_time");
+		LocalTime journeyTime = time.toLocalTime();
+		Integer noOftickets = result.getInt("tickets");
+		String passengers = result.getString("passengers");
+		int price = result.getInt("total_price");
+		String status = result.getString("status");
+		
+		
+		user.setUserName(name);
+		train.setTrainNumber(trainNumber);
+		train.setTrainName(trainName);
+		
+		ticket.setTrain(train);
+		ticket.setUser(user);
+		ticket.setPnrNumber(pnrNumber);
+		ticket.setBookingDate(bDate);
+		ticket.setJourneyDate(journeyDate);
+		ticket.setJourneyTime(journeyTime);
+		ticket.setNoOfTickets(noOftickets);
+		ticket.setPassengers(passengers);
+		ticket.setTotalPrice(price);
+		ticket.setStatus(status);
+		
+		
+		return ticket;
 	}
 }
