@@ -38,7 +38,7 @@
 							<span class="input-group-text" style="width: 170px;">TRAIN NUMBER
 							</span>
 						</div>
-						<input name="trainNumber" class="form-control" value=<%=trainNumber%> type="text" readonly>
+						<input name="trainNumber" id="trainNumber" class="form-control" value=<%=trainNumber%> type="text" readonly>
 						<input type="hidden" name="trainId" value=<%=trainId%>>
 					</div>
 					<div class="form-group input-group">
@@ -83,16 +83,17 @@
 							<span class="input-group-text" style="width: 170px;">NO OF PASSENGERS
 							</span>
 						</div>
-						<input name="noOfTickets" class="form-control" type="number" autocomplete="off" required>
+						<input name="noOfTickets" id="noOfTickets" class="form-control" type="number" oninput="getPrice()" autocomplete="off" required>
 					</div>
+					<div><p id="price" class="text-center"></p></div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text" style="width: 170px;">PASSENGERS NAME
 							</span>
 						</div>
 						<input name="passengersName" class="form-control" type="text" autocomplete="off" required>
-						<p>(*Hints : Enter '/' between Passengers Name)</p>
 					</div>
+					<div><p>(*Hints : Enter '/' between Passengers Name)</p></div>
 					<div class="form-group">
 					<button type="submit" class="btn btn-primary btn-block">
 						CONFIRM TICKET</button>
@@ -112,5 +113,25 @@ function setMinMax() {
     let endDateStr = endDate.toJSON().substr(0, 10);
     document.querySelector("#journeyDate").setAttribute("max", endDateStr);
 }
+
+function getPrice(){
+	
+	event.preventDefault();			
+	let trainNumber = document.querySelector("#trainNumber").value;
+	let tickets = document.querySelector("#noOfTickets").value;
+	const queryParams = "?trainNumber=" + trainNumber + "&tickets=" + tickets;
+	let url = "GetFareServlet" + queryParams ;				
+	let price;
+	fetch(url).then(res=> res.json()).then(res=>{				
+		let result=res;								
+		if(result!= 0){
+			price = "<h6>Total Fare is : Rs.  " + result + "/-</h6>";
+		}else{
+			price = result.errorMessage;
+		}
+	document.querySelector("#price").innerHTML=price;
+	
+});
+}	
 </script>
 </html>

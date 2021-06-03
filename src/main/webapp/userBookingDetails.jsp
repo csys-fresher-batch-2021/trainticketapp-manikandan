@@ -58,9 +58,9 @@
 					<td><%=ticket.getPassengers()%></td>
 					<td><%=ticket.getTotalPrice()%></td>
 					<%if(ticket.getJourneyDate().isAfter(LocalDate.now()) && ticket.getStatus().equalsIgnoreCase("BOOKED")) {%>
-					<td><h4><span class="badge badge-success">BOOKED</span></h4></td>
+					<td><h5><span class="badge badge-success">BOOKED</span></h5></td>
 					<%}else{ %>
-					<td><h4><span class="badge badge-danger">CANCELLED</span></h4></td>
+					<td><h5><span class="badge badge-danger">CANCELLED</span></h5></td>
 					<%
 					}
 					if (ticket.getJourneyDate().isAfter(LocalDate.now()) && ticket.getStatus().equalsIgnoreCase("BOOKED")) {
@@ -68,10 +68,10 @@
 					<td><a
 						href="CancelTrainServlet?orderId=<%=ticket.getId()%>&tickets=<%=ticket.getNoOfTickets()%>&showDate=<%=ticket.getJourneyDate()%>"
 						class="btn btn-danger">Cancel</a> <%
- } else {
- %>
+				 	} else {
+ 						%>
 					<td>
-						<h4><span class="badge badge-danger">CANCELLED</span></h4>
+						<h5><span class="badge badge-danger">CANCELLED</span></h5>
 					</td>
 					<%
 					}

@@ -147,6 +147,48 @@ public class TicketDAO {
 		}
 
 	}
+	
+	
+	/**
+	 * This Method is Used to fetch All booking Details Done by the User
+	 * @return
+	 */
+	public List<Ticket> getAllBookings() {
+
+		final List<Ticket> tickets = new ArrayList<>();
+
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet result = null;
+
+		try { // Get the Connection
+
+			connection = ConnectionUtil.getConnection();
+
+			// Query Statement
+
+			// Executing Query Statement
+			String sql = BASE_QUERY ;
+			pst = connection.prepareStatement(sql);
+
+			result = pst.executeQuery();
+
+			while (result.next()) {
+
+				Ticket ticket = toRow(result);
+				tickets.add(ticket);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Unable to Fetch Trains");
+		} finally {
+			// Closing the Connection
+			ConnectionUtil.close( pst, connection,result);
+		}
+
+		return tickets;
+	}
 
 	
 	/**
