@@ -41,4 +41,13 @@ public class TicketService {
 		return TicketConverter.toTicketDTO(tickets);
 
 	}
+
+	public static void cancelBooking(Integer bookingId) {
+		try {
+			ticketDAO.cancelBooking(bookingId);
+		} catch (Exception e) {
+			throw new ServiceException(e.getMessage());
+		}
+
+	}
 }
