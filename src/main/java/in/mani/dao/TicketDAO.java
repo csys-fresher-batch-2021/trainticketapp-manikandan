@@ -138,8 +138,7 @@ public class TicketDAO {
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new DBException("Unable to Update Movie");
+			throw new DBException("Unable to Update Train Details");
 		} finally {
 
 			// Closing the Session
