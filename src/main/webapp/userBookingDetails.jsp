@@ -17,7 +17,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<div><h3 class="text-center">My Bookings</h3></div>
-		<jsp:include page="message.jsp"></jsp:include>
+		<p class="text-center"><jsp:include page="message.jsp"></jsp:include></p>
 		<%List<TicketDTO> tickets = (List<TicketDTO>) request.getAttribute("TICKET_DETAILS");
 		if (tickets != null) { %>
 		<table class="table table-bordered">
@@ -55,19 +55,23 @@
 					<td><%=ticket.getJourneyDate()%></td>
 					<td><%=ticket.getJourneyTime()%></td>
 					<td><%=ticket.getNoOfTickets()%></td>
-					<td><%=ticket.getPassengers()%></td></td>
+					<td><%=ticket.getPassengers()%></td>
 					<td><%=ticket.getTotalPrice()%></td>
-					<td><%=ticket.getStatus()%></td>
+					<%if(ticket.getJourneyDate().isAfter(LocalDate.now()) && ticket.getStatus().equalsIgnoreCase("BOOKED")) {%>
+					<td><h4><span class="badge badge-success">BOOKED</span></h4></td>
+					<%}else{ %>
+					<td><h4><span class="badge badge-danger">CANCELLED</span></h4></td>
 					<%
+					}
 					if (ticket.getJourneyDate().isAfter(LocalDate.now()) && ticket.getStatus().equalsIgnoreCase("BOOKED")) {
 					%>
 					<td><a
-						href="CancelMovieServlet?orderId=<%=ticket.getId()%>&movieId=<%=train.getId()%>&tickets=<%=ticket.getNoOfTickets()%>&showDate=<%=ticket.getJourneyDate()%>"
+						href="CancelTrainServlet?orderId=<%=ticket.getId()%>&tickets=<%=ticket.getNoOfTickets()%>&showDate=<%=ticket.getJourneyDate()%>"
 						class="btn btn-danger">Cancel</a> <%
  } else {
  %>
 					<td>
-						<button class="btn btn-danger" disabled>Cancel</button>
+						<h4><span class="badge badge-danger">CANCELLED</span></h4>
 					</td>
 					<%
 					}
