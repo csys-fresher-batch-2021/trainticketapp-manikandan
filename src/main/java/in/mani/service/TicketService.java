@@ -30,6 +30,11 @@ public class TicketService {
 		}
 	}
 
+	/**
+	 * This Method is to get Booking Details
+	 * @param userId
+	 * @return
+	 */
 	public static List<TicketDTO> getUserBookingDetails(Integer userId) {
 		List<Ticket> tickets = null;
 
@@ -42,6 +47,10 @@ public class TicketService {
 
 	}
 
+	/**
+	 * This Method is to cancel Booking Details
+	 * @param bookingId
+	 */
 	public static void cancelBooking(Integer bookingId) {
 		try {
 			ticketDAO.cancelBooking(bookingId);

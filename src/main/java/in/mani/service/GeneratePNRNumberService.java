@@ -5,7 +5,10 @@ public class GeneratePNRNumberService {
 	private GeneratePNRNumberService() {
 
 	}
-
+	/**
+	 * This Method is to generate PNR Number
+	 * @return
+	 */
 	public static int getPNRNumber() {
 		long min = 10000000;
 		long max = 99999999;

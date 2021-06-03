@@ -20,7 +20,11 @@ public class AdminDAO {
 		public static AdminDAO getInstance() {
 			return instance;
 		}
-		
+		/**
+		 * This Methods retrieves All Admin Details
+		 * @return
+		 * @throws DBException
+		 */
 		public List<Admin> getAllAdmins() throws DBException {
 
 			List<Admin> admins = new ArrayList<>();
