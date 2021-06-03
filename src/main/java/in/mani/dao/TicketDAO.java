@@ -101,7 +101,7 @@ public class TicketDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("Unable to Fetch Movies");
+			throw new DBException("Unable to Fetch Train Details");
 		} finally {
 			// Closing the Connection
 			ConnectionUtil.close(pst, connection,result);
