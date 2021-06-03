@@ -20,7 +20,11 @@ public class UserRegisterDAO {
 	public static UserRegisterDAO getInstance() {
 		return instance;
 	}
-
+	/**
+	 * This Method is add User
+	 * @param user
+	 * @throws DBException
+	 */
 	public void addUser(User user) throws DBException {
 
 		Connection connection = null;
@@ -48,7 +52,11 @@ public class UserRegisterDAO {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
-
+	/**
+	 * This Method is to fetch Users details
+	 * @return
+	 * @throws DBException
+	 */
 	public List<User> getAllUsers() throws DBException {
 
 		List<User> users = new ArrayList<>();

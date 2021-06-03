@@ -150,7 +150,7 @@ public class TicketDAO {
 	
 	
 	/**
-	 * This Method is Used to fetch All booking Details Done by the User
+	 * This Method is Used to fetch All booking Details Done by the Users
 	 * @return
 	 */
 	public List<Ticket> getAllBookings() {
@@ -181,7 +181,7 @@ public class TicketDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("Unable to Fetch Trains");
+			throw new DBException("Unable to Fetch Booking Details");
 		} finally {
 			// Closing the Connection
 			ConnectionUtil.close( pst, connection,result);

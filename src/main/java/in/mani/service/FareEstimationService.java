@@ -12,7 +12,12 @@ public class FareEstimationService {
 	private FareEstimationService() {
 		
 	}
-
+	/**
+	 * This Method is get Fare Amount
+	 * @param trainNumber
+	 * @param noOfTickets
+	 * @return
+	 */
 	public static int getPrice(int trainNumber, int noOfTickets) {
 
 		int totalPrice = 0;

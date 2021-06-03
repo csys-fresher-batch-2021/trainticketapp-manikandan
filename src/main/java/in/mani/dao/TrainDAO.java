@@ -23,7 +23,11 @@ public class TrainDAO {
 	public static TrainDAO getInstance() {
 		return instance;
 	}
-
+	/**
+	 * This Method is used to add Trains
+	 * @param train
+	 * @throws DBException
+	 */
 	public void addTrain(Train train) throws DBException {
 
 		Connection connection = null;
@@ -54,7 +58,12 @@ public class TrainDAO {
 			ConnectionUtil.close(pst, connection);
 		}
 	}
-
+	
+	/**
+	 * This Method is used to fetch all Trains
+	 * @return
+	 * @throws DBException
+	 */
 	public List<Train> getAllTrains() throws DBException {
 
 		List<Train> trains = new ArrayList<>();
@@ -108,12 +117,10 @@ public class TrainDAO {
 	}
 
 	/**
-	 * This Method will Delete the Train in DataBase
-	 * 
-	 * @param name
-	 * @param actor
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
+	 *  This Method will Delete the Train in DataBase
+	 * @param trainNumber
+	 * @param trainName
+	 * @throws DBException
 	 */
 	public void deleteTrain(int trainNumber, String trainName) throws DBException {
 
@@ -142,6 +149,12 @@ public class TrainDAO {
 		}
 	}
 
+	/**
+	 * This Method is used to Fetch Train by keyword
+	 * @param keyword
+	 * @return
+	 * @throws DBException
+	 */
 	public List<Train> searchTrainByKeyword(String keyword) throws DBException {
 		final List<Train> trains = new ArrayList<>();
 		Connection connection = null;
@@ -206,6 +219,13 @@ public class TrainDAO {
 
 	}
 
+	/**
+	 *  This Method is used to Fetch Train by Places
+	 * @param trainSource
+	 * @param trainDestination
+	 * @return
+	 * @throws DBException
+	 */
 	public List<Train> searchTrainByPlaces(String trainSource, String trainDestination) throws DBException {
 		final List<Train> trains = new ArrayList<>();
 		Connection connection = null;

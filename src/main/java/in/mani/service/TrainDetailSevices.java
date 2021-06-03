@@ -47,6 +47,11 @@ public class TrainDetailSevices {
 		return TrainConverter.toTrainDTO(allTrains);
 	}
 
+	/**
+	 * This Method is to delete Train
+	 * @param trainNumber
+	 * @param trainName
+	 */
 	public static void deleteTrain(int trainNumber, String trainName) {
 		try {
 			TrainNumberValidator.isValidtrainNumber(trainNumber);
@@ -57,7 +62,12 @@ public class TrainDetailSevices {
 			throw new ServiceException(e.getMessage());
 		}
 	}
-
+	
+	/**
+	 * This Method is to search Train
+	 * @param keyword
+	 * @return
+	 */
 	public static List<TrainDTO> searchTrainByKeyword(String keyword) {
 
 		List<Train> trains = null;
@@ -75,6 +85,12 @@ public class TrainDetailSevices {
 		return TrainConverter.toTrainDTO(trains);
 	}
 
+	/**
+	 * This Method is to search train by Places
+	 * @param source
+	 * @param destination
+	 * @return
+	 */
 	public static List<TrainDTO> searchTrainByPlaces(String source, String destination) {
 		List<Train> trains = null;
 
