@@ -53,6 +53,8 @@ String role = (String) session.getAttribute("ROLE");
 				if (loggedInAdminId != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 				%>
 				<li class="nav-item active"><a class="nav-link" href="addTrains.jsp">ADD TRAIN</a></li>
+				<li class="nav-item active"><a class="nav-link" href="allBookingDetails.jsp">USER BOOKINGS</a>
+				</li>
 				<%
 				}
 				%>

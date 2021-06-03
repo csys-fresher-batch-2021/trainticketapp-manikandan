@@ -50,4 +50,21 @@ public class TicketService {
 		}
 
 	}
+
+	/**
+	 * This Method will return the Booking Details of all Users
+	 * @return
+	 */
+	public static List<TicketDTO> getAllBookingDetails() {
+
+		List<Ticket> tickets = null;
+
+		try {
+			tickets = ticketDAO.getAllBookings();
+		} catch (Exception e) {
+			throw new ServiceException(e.getMessage());
+		}
+		return TicketConverter.toTicketDTO(tickets);
+
+	}
 }
