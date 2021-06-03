@@ -1,5 +1,7 @@
 package in.mani.service;
 
+import java.util.List;
+
 import in.mani.converter.TicketConverter;
 import in.mani.dao.TicketDAO;
 import in.mani.dto.TicketDTO;
@@ -28,4 +30,15 @@ public class TicketService {
 		}
 	}
 
+	public static List<TicketDTO> getUserBookingDetails(Integer userId) {
+		List<Ticket> tickets = null;
+
+		try {
+			tickets = ticketDAO.getUserBookings(userId);
+		} catch (Exception e) {
+			throw new ServiceException(e.getMessage());
+		}
+		return TicketConverter.toTicketDTO(tickets);
+
+	}
 }
