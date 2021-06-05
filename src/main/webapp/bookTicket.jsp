@@ -46,14 +46,14 @@
 							<span class="input-group-text" style="width: 170px;">TRAIN NAME
 							</span>
 						</div>
-						<input name="trainName" class="form-control" value=<%=trainName%> type="text" readonly>
+						<input name="trainName" class="form-control" value="<%=trainName%>" type="text" readonly>
 						</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text" style="width: 170px;">SOURCE
 							</span>
 						</div>
-						<input name="source" class="form-control" value=<%=source%> type="text" readonly>
+						<input name="source" class="form-control" value="<%=source%>" type="text" readonly>
 						<input name="sourceTime" class="form-control" value=<%=sourceTime%> type="text" readonly>
 					</div>
 					<div class="form-group input-group">
@@ -61,7 +61,7 @@
 							<span class="input-group-text" style="width: 170px;">DESTINATION
 							</span>
 						</div>
-						<input name="destination" class="form-control" value=<%=destination%> type="text" readonly>
+						<input name="destination" class="form-control" value="<%=destination%>" type="text" readonly>
 						<input name="destinationTime" class="form-control" value=<%=destinationTime%> type="text" readonly>
 					</div>
 					<div class="form-group input-group">

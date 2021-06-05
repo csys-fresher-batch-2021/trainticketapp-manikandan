@@ -19,7 +19,8 @@
 				<form action="UserRegisterServlet" method="POST">
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <em class="fa fa-user"></em>
+							<span class="input-group-text"> <em class="fa fa-user"
+								style="font-size: 24px"></em>
 							</span>
 						</div>
 						<input name="firstName" class="form-control"
@@ -30,7 +31,8 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <em class="fa fa-envelope"></em>
+							<span class="input-group-text"> <em class="fa fa-envelope"
+								style="font-size: 24px"></em>
 							</span>
 						</div>
 						<input name="email" class="form-control"
@@ -40,7 +42,8 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <em class="fa fa-phone"></em>
+							<span class="input-group-text"> <em class="fa fa-phone"
+								style="font-size: 24px"></em>
 							</span>
 						</div>
 						<input class="form-control" value="+91" type="text" readonly>
@@ -51,27 +54,32 @@
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <em class="fa fa-user"></em>
+							<span class="input-group-text"> <em class="fa fa-user"
+								style="font-size: 24px"></em>
 							</span>
 						</div>
 						<input name="userName" class="form-control"
 							placeholder="Enter User Name" type="text" autocomplete="off"
 							required>
 					</div>
+					<div><p>(*Hints :Username must contains Atleast one Alphabet and one Number|Length of Username should be > 6 Characters )</p></div>
 					<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <em class="fa fa-lock"></em>
+							<span class="input-group-text"> <em class="fa fa-lock"
+								style="font-size: 24px"></em>
 							</span>
 						</div>
 						<input name="newPassword" class="form-control"
 							placeholder="New Password" type="password" autocomplete="off"
 							required>
 					</div>
+					<div><p>(*Hints :Password must contains Atleast one Alphabet, one Symbol and one Number|Length of Password should be > 8 Characters )</p></div>
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"> <em class="fa fa-lock"></em>
+							<span class="input-group-text"> <em class="fa fa-lock"
+								style="font-size: 24px"></em>
 							</span>
 						</div>
 						<input name="confirmPassword" class="form-control"
@@ -79,9 +87,9 @@
 							required>
 					</div>
 					<div class="form-group input-group">
-					<input type="checkbox" required>By Creating Account you accept
-					our Terms Of Use
-				</div>
+						<input type="checkbox" required>By Creating Account you
+						accept our Terms Of Use
+					</div>
 					<!-- form-group// -->
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary btn-block">
