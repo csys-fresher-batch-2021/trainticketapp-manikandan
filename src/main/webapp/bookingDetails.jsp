@@ -22,11 +22,7 @@
 		%>
 		<table class="table table-bordered">
 		<caption>Showing Booking Details</caption>
-		<thead>
-		<tr><th id="particulars">PARTICULARS</th>
-			<th id="Details">DETAILS</th></tr>
-			</thead>
-			<tbody>
+		<tbody>
 		<tr><td>TRAIN NUMBER</td> <td><%=train.getTrainNumber()%></td> </tr>
 		<tr><td>TRAIN NAME</td> <td><%=train.getTrainName()%></td> </tr>
 		<tr><td>JOURNEY DATE (YYYY-MM-DD)</td> <td> <%=ticket.getJourneyDate()%></td> </tr>

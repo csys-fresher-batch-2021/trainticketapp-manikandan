@@ -16,6 +16,18 @@ input{
 	width:250px;
 }
 </style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+	integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	crossorigin="anonymous">
+<link href="/your-path-to-fontawesome/css/fontawesome.css"
+	rel="stylesheet">
+<link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+<link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
 <body>
 <%
@@ -34,7 +46,7 @@ input{
 			<div class="form-group input-group">
 			<input type="text" name="keyword" <%if(keyword!=null){ %> value="<%=keyword%>" <% }%> placeholder="Train Name/source/Destination" autocomplete="off" required><br />
 			<div class="input-group-prepend">
-			<button type="submit" class="btn btn-secondary">Search</button>
+			<button type="submit" class="btn btn-primary"><em class="fas fa-search"></em></button>
 			</div>
 		</div>
 		</form>
