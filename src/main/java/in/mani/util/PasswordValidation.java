@@ -16,7 +16,7 @@ public class PasswordValidation {
 		if (password == null || password.trim().equals("")) {
 			throw new ValidationException("Password Cannot be Null");
 		}
-		String condition = "[a-zA-Z0-9@#$%^&+=\\s*]{8,}";
+		String condition = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
 		Pattern pattern = Pattern.compile(condition);
 		Matcher matcher = pattern.matcher(password);
 		boolean valid = matcher.matches();

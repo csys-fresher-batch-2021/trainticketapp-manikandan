@@ -14,7 +14,7 @@ public class UserNameValidation {
 		if (userName == null || userName.trim().equals("")) {
 			throw new ValidationException("User Name should not be empty");
 		}
-		String condition = "[a-zA-Z0-9]{6,15}";
+		String condition = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20}$";
 		Pattern pattern = Pattern.compile(condition);
 		Matcher matcher = pattern.matcher(userName);
 		boolean valid = matcher.matches();
@@ -22,4 +22,5 @@ public class UserNameValidation {
 			throw new ValidationException("Invalid User Name");
 		}
 	}
+
 }
