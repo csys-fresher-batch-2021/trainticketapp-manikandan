@@ -62,7 +62,7 @@
 							placeholder="Enter User Name" type="text" autocomplete="off"
 							required>
 					</div>
-					<div><p>(*Hints :Username must contains Atleast one Alphabet and one Number|Length of Username should be > 6 Characters )</p></div>
+					<div><p>(*Hints :Username must contains Atleast one Upper & Lower letters and one Number|Length of Username should be > 6 Characters )</p></div>
 					<!-- form-group end.// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
@@ -74,7 +74,7 @@
 							placeholder="New Password" type="password" autocomplete="off"
 							required>
 					</div>
-					<div><p>(*Hints :Password must contains Atleast one Alphabet, one Symbol and one Number|Length of Password should be > 8 Characters )</p></div>
+					<div><p>(*Hints :Password must contains Atleast one Upper & Lower letters, one Symbol and one Number|Length of Password should be > 8 Characters )</p></div>
 					<!-- form-group// -->
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
