@@ -20,11 +20,11 @@
 	String trainName = request.getParameter("trainName");
 	String trainId = request.getParameter("trainId");
 	String trainNumber = request.getParameter("trainNumber");
-	 String source =request.getParameter("source"); 
-	 String sourceTime =request.getParameter("sourceTime"); 
-	 String destination =request.getParameter("destination"); 
-	 String destinationTime =request.getParameter("destinationTime"); 
-	 String classType = request.getParameter("classType");
+	String source = request.getParameter("source");
+	String sourceTime = request.getParameter("sourceTime");
+	String destination = request.getParameter("destination");
+	String destinationTime = request.getParameter("destinationTime");
+	String classType = request.getParameter("classType");
 	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
@@ -35,69 +35,82 @@
 				<form action=BookTicketServlet>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width: 170px;">TRAIN NUMBER
-							</span>
+							<span class="input-group-text" style="width: 170px;">TRAIN
+								NUMBER </span>
 						</div>
-						<input name="trainNumber" id="trainNumber" class="form-control" value=<%=trainNumber%> type="text" readonly>
-						<input type="hidden" name="trainId" value=<%=trainId%>>
+						<input name="trainNumber" id="trainNumber" class="form-control"
+							value=<%=trainNumber%> type="text" readonly> <input
+							type="hidden" name="trainId" value=<%=trainId%>>
 					</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width: 170px;">TRAIN NAME
-							</span>
+							<span class="input-group-text" style="width: 170px;">TRAIN
+								NAME </span>
 						</div>
-						<input name="trainName" class="form-control" value="<%=trainName%>" type="text" readonly>
-						</div>
+						<input name="trainName" class="form-control"
+							value="<%=trainName%>" type="text" readonly>
+					</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text" style="width: 170px;">SOURCE
 							</span>
 						</div>
-						<input name="source" class="form-control" value="<%=source%>" type="text" readonly>
-						<input name="sourceTime" class="form-control" value=<%=sourceTime%> type="text" readonly>
+						<input name="source" class="form-control" value="<%=source%>"
+							type="text" readonly> <input name="sourceTime"
+							class="form-control" value=<%=sourceTime%> type="text" readonly>
 					</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text" style="width: 170px;">DESTINATION
 							</span>
 						</div>
-						<input name="destination" class="form-control" value="<%=destination%>" type="text" readonly>
-						<input name="destinationTime" class="form-control" value=<%=destinationTime%> type="text" readonly>
+						<input name="destination" class="form-control"
+							value="<%=destination%>" type="text" readonly> <input
+							name="destinationTime" class="form-control"
+							value=<%=destinationTime%> type="text" readonly>
 					</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text" style="width: 170px;">CLASS
 							</span>
 						</div>
-						<input name="trainClass" class="form-control" value=<%=classType%> type="text" readonly>
+						<input name="classType" class="form-control" value=<%=classType%>
+							type="text" readonly>
 					</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width: 170px;">JOURNEY DATE 
-							</span>
+							<span class="input-group-text" style="width: 170px;">JOURNEY
+								DATE </span>
 						</div>
-						<input name="journeyDate" id="journeyDate" class="form-control" type="date" required>
+						<input name="journeyDate" id="journeyDate" class="form-control"
+							type="date" required>
 					</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width: 170px;">NO OF PASSENGERS
-							</span>
+							<span class="input-group-text" style="width: 170px;">NO OF
+								PASSENGERS </span>
 						</div>
-						<input name="noOfTickets" id="noOfTickets" class="form-control" type="number" oninput="getPrice()" autocomplete="off" required>
+						<input name="noOfTickets" id="noOfTickets" class="form-control"
+							type="number" oninput="getPrice()" autocomplete="off" required>
 					</div>
-					<div><p id="price" class="text-center"></p></div>
+					<div>
+						<p id="price" class="text-center"></p>
+					</div>
 					<div class="form-group input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text" style="width: 170px;">PASSENGERS NAME
-							</span>
+							<span class="input-group-text" style="width: 170px;">PASSENGERS
+								NAME </span>
 						</div>
-						<input name="passengersName" class="form-control" type="text" autocomplete="off" required>
+						<input name="passengersName" class="form-control" type="text"
+							autocomplete="off" required>
 					</div>
-					<div><p>(*Hints : Enter '/' between Passengers Name)</p></div>
+					<div>
+						<p>(*Hints : Enter Passengers Name with one WhiteSpace)</p>
+					</div>
 					<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-block">
-						CONFIRM TICKET</button>
-				</div>
+						<button type="submit" class="btn btn-primary btn-block">
+							CONFIRM TICKET</button>
+					</div>
 				</form>
 			</article>
 		</div>
@@ -124,12 +137,14 @@ function getPrice(){
 	let price;
 	fetch(url).then(res=> res.json()).then(res=>{				
 		let result=res;								
-		if(result!= 0){
+		if(result != 0 && result > 0){
 			price = "<h6>Total Fare is : Rs.  " + result + "/-</h6>";
 		}else{
 			price = result.errorMessage;
 		}
+	if(price != null){
 	document.querySelector("#price").innerHTML=price;
+	}
 	
 });
 }	

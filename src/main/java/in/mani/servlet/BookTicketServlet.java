@@ -47,6 +47,12 @@ public class BookTicketServlet extends HttpServlet {
 		String journeyTimeStr = request.getParameter("sourceTime");
 		String noOfTicketsStr  = request.getParameter("noOfTickets");
 		String passengersName  = request.getParameter("passengersName"); 
+		
+		String source = request.getParameter("source");
+		String destination = request.getParameter("destination");
+		String destinationTime = request.getParameter("destinationTime");
+		String classType = request.getParameter("classType");
+		
     	try {
     		int trainId = Integer.parseInt(trainIdStr);
     		int trainNumber = Integer.parseInt(trainNumberStr);
@@ -77,7 +83,7 @@ public class BookTicketServlet extends HttpServlet {
     	catch (Exception e) {
 			e.printStackTrace();
 			String errorMessage=e.getMessage();
-			response.sendRedirect("bookTicket.jsp?errorMessage=" + errorMessage);
+			response.sendRedirect("bookTicket.jsp?errorMessage=" + errorMessage + "&trainId=" + trainIdStr + "&trainName=" + trainName + "&trainNumber=" + trainNumberStr + "&source=" + source + "&sourceTime=" + journeyTimeStr + "&destination=" + destination + "&destinationTime=" + destinationTime + "&classType=" + classType);
 		}
 	}
 }
