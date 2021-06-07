@@ -15,9 +15,8 @@ public class NumberValidator {
 	 */
 	public static void isValidNumber(int number) {
 
-		if (number == 0 || number < 0) {
+		if (number == 0 || number < 0 || number > 2147483647) {
 			throw new ValidationException("Number should not be Negative");
 		}
 	}
-
 }

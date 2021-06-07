@@ -85,7 +85,7 @@ table, td, th {
 						class=" btn btn-danger">Delete</a> <%
  							}
  							%> <%
- 						if (loggedInUser != null) {
+ 						if (loggedInUser != null) {	
  						%> 
  						<a
 						href="bookTicket.jsp?trainId=<%=train.getId()%>&trainName=<%=train.getTrainName()%>&trainNumber=<%=train.getTrainNumber()%>&source=<%=train.getSource()%>&sourceTime=<%=train.getSourceTime()%>&destination=<%=train.getDestination()%>&destinationTime=<%=train.getDestinationTime()%>&classType=<%=train.getClassType()%>"

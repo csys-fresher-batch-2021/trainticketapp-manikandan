@@ -7,6 +7,8 @@ import in.mani.dao.TicketDAO;
 import in.mani.dto.TicketDTO;
 import in.mani.exception.ServiceException;
 import in.mani.model.Ticket;
+import in.mani.util.NameValidation;
+import in.mani.util.NumberValidator;
 
 public class TicketService {
 
@@ -23,6 +25,8 @@ public class TicketService {
 	 */
 	public static void addTicketDetails(TicketDTO ticketDTO) {
 		try {
+			NameValidation.isValidName(ticketDTO.getPassengers());
+			NumberValidator.isValidNumber(ticketDTO.getNoOfTickets());
 			Ticket ticket = TicketConverter.toTicket(ticketDTO);
 			ticketDAO.addTicketDetails(ticket);
 		} catch (Exception e) {
