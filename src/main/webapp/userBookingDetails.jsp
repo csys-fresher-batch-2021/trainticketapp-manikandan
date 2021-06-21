@@ -8,6 +8,9 @@
 <%@page import="in.mani.service.TrainDetailSevices"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.time.LocalDate"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,25 +48,34 @@
 						i++;
 						TrainDTO train = ticket.getTrain();
 						UserDTO user = ticket.getUser();
+						//To Convert the Date Format
+						LocalDateTime dateTime = ticket.getBookingDate();
+					   String bookedDate = dateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:MM:SS"));
+					    LocalDate date = ticket.getJourneyDate();
+					   String journeyDate = date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 				%>
 				<tr>
 					<td><%=i%></td>
 					<td><%=user.getUserName()%></td>
 					<td><%=train.getTrainName()%>(<%=train.getTrainNumber()%>)</td>
 					<td><%=ticket.getPnrNumber()%></td>
-					<td><%=ticket.getBookingDate()%></td>
-					<td><%=ticket.getJourneyDate()%></td>
+					<td><%=bookedDate%></td>
+					<td><%=journeyDate%></td>
 					<td><%=ticket.getJourneyTime()%></td>
 					<td><%=ticket.getNoOfTickets()%></td>
 					<td><%=ticket.getPassengers()%></td>
 					<td><%=ticket.getTotalPrice()%></td>
-					<%if(ticket.getJourneyDate().isAfter(LocalDate.now()) && ticket.getStatus().equalsIgnoreCase("BOOKED")) {%>
+					<%if(ticket.getJourneyDate().isBefore(LocalDate.now())) {%>
+					<td><h5><span class="badge badge-info">COMPLETED</span></h5></td>
+					<%}else if(ticket.getJourneyDate().isAfter(LocalDate.now()) && ticket.getStatus().equalsIgnoreCase("BOOKED") || ticket.getJourneyDate().isEqual(LocalDate.now())) {%>
 					<td><h5><span class="badge badge-success">BOOKED</span></h5></td>
 					<%}else{ %>
 					<td><h5><span class="badge badge-danger">CANCELLED</span></h5></td>
 					<%
 					}
-					if (ticket.getJourneyDate().isAfter(LocalDate.now()) && ticket.getStatus().equalsIgnoreCase("BOOKED")) {
+					if(ticket.getJourneyDate().isBefore(LocalDate.now())) {%>
+					<td><h5><span class="badge badge-info">COMPLETED</span></h5></td>
+					<%}else if (ticket.getJourneyDate().isAfter(LocalDate.now()) && ticket.getStatus().equalsIgnoreCase("BOOKED") || ticket.getJourneyDate().isEqual(LocalDate.now())) {
 					%>
 					<td><a
 						href="CancelTrainServlet?orderId=<%=ticket.getId()%>&tickets=<%=ticket.getNoOfTickets()%>&showDate=<%=ticket.getJourneyDate()%>"

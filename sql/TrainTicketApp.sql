@@ -52,7 +52,7 @@ select * from booking_details;
 
 //To get Booking Details
 select b.id, u.username as user_name, t.trainnumber as train_number, t.trainname as train_name, b.pnr_no as pnr_number ,b.booking_date, b.journey_date ,b.journey_time , t.class_type, b.tickets,b.passengers,b.total_price, b.status
-			from users u, trains t , booking_details b where b.user_id = u.id and b.train_id = t.id;
+			from users u, trains t , booking_details b where b.user_id = u.id and b.train_id = t.id ORDER BY journey_date ASC;
 			select * from trains;
 			select * from booking_details;
 

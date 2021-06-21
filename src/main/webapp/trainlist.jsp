@@ -26,7 +26,11 @@ table, td, th {
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3 class="text-center">List of Trains</h3>
-		<jsp:include page="message.jsp"></jsp:include>
+		<p class="text-center"><jsp:include page="message.jsp"></jsp:include></p>
+		<%
+		List<TrainDTO> trains = (List<TrainDTO>) request.getAttribute("TRAIN_LIST");
+		if (trains != null) {
+		%>
 		<table class="table table-bordered">
 			<caption>Train List</caption>
 			<thead>
@@ -59,8 +63,6 @@ table, td, th {
 			</thead>
 			<tbody>
 				<%
-				List<TrainDTO> trains = (List<TrainDTO>) request.getAttribute("TRAIN_LIST");
-				if (trains != null) {
 					int i = 0;
 					for (TrainDTO train : trains) {
 						i++;
@@ -102,11 +104,11 @@ table, td, th {
 				</tr>
 				<%
 				}
-				}
 				%>
 
 			</tbody>
 		</table>
+		<%} %>
 	</main>
 </body>
 </html>
