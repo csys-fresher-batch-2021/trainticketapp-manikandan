@@ -8,6 +8,8 @@
 <%@page import="in.mani.service.TrainDetailSevices"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.time.LocalDate"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,21 +22,41 @@
 			<article class="card-body mx-auto" style="max-width: 400px;">
 				<h4 class="card-title mt-3 text-center">USER'S BOOKING DETAILS</h4>
 				<p class="text-center"><jsp:include page="message.jsp"></jsp:include></p>
-		<form>
-		<div class="form-group input-group"><div class="input-group-prepend"><span class="input-group-text" style="width:130px;">JOURNEY DATE</span></div><input type="date" style="width:150px;" id="date" name="date" onchange="filterDetails()"> </div>
-		<div class="form-group input-group"><div class="input-group-prepend"><span class="input-group-text"style="width:130px;" >TRAIN NAME</span></div><input type="text" style="width:150px;" id="train" name="train" oninput="filterDetails()" placeholder="Train Name"></div>
-		<div class="form-group input-group"><div class="input-group-prepend"><span class="input-group-text" style="width:130px;">STATUS</span></div><select id="status" style="width:150px;" id="status" name="status" onchange="filterDetails()">
-			<option value="" selected>All</option>
-			<option value="BOOKED">BOOKED</option>
-			<option value="CANCELLED">CANCELLED</option>
-			<option value="FINISHED">FINISHED</option>
-		</select></div>
-		<div class="form-group">
-						<button type="reset" class="btn btn-primary btn-block" onclick="clearFilters()">
-							Clear Filters</button>
+				<form>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="width: 130px;">JOURNEY
+								DATE</span>
+						</div>
+						<input type="date" style="width: 150px;" id="date" name="date"
+							onchange="filterDetails()">
 					</div>
-		</form>
-		</article>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="width: 130px;">TRAIN
+								NAME</span>
+						</div>
+						<input type="text" style="width: 150px;" id="train" name="train"
+							oninput="filterDetails()" placeholder="Train Name">
+					</div>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" style="width: 130px;">STATUS</span>
+						</div>
+						<select id="status" style="width: 150px;" id="status"
+							name="status" onchange="filterDetails()">
+							<option value="" selected>All</option>
+							<option value="BOOKED">BOOKED</option>
+							<option value="CANCELLED">CANCELLED</option>
+							<!-- <option value="FINISHED">FINISHED</option> -->
+						</select>
+					</div>
+					<div class="form-group">
+						<button type="reset" class="btn btn-primary btn-block"
+							onclick="clearFilters()">Clear Filters</button>
+					</div>
+				</form>
+			</article>
 		</div>
 		<table class="table table-bordered">
 			<caption>My Booking Details</caption>
@@ -56,7 +78,7 @@
 			<tbody id="bookings">
 			</tbody>
 		</table>
-</main>
+	</main>
 </body>
 <script type="text/javascript">
 		function filterDetails(){
@@ -64,9 +86,9 @@
 			let filterDate = document.querySelector("#date").value;
 			console.log(filterDate);
 			let trainname = document.querySelector("#train").value;
-			console.log(trainname);
+			console.log(trainname)
 			let status = document.querySelector("#status").value;
-			console.log(status);
+			console.log(status)
 			let url = "AllBookingDetailsServlet";
 			fetch(url).then(res=>res.json()).then(res=>{
 			let data = [];
@@ -102,7 +124,12 @@
 				 if(data.length != 0){
 				content+="<tr><td>"+ ++j + "</td><td>" + data[i].user.userName + "</td><td>" + data[i].train.trainName +"(" + data[i].train.trainNumber + ")</td>";
 				content+="<td>" + data[i].pnrNumber + "</td><td>" + data[i].bookingDate + "</td>";
-				content+="<td>" + data[i].journeyDate + "</td><td>" + data[i].journeyTime + "</td>";
+				console.log(data[i].journeyDate)
+				let journeyDate = data[i].journeyDate;
+				let arr = journeyDate.split('-') ;
+				filterDate = arr[2] + "-" + arr[1] + "-" + arr[0];
+				console.log(filterDate)
+				content+="<td>" + filterDate + "</td><td>" + data[i].journeyTime + "</td>";
 				content+="<td>" + data[i].noOfTickets + "</td><td>" + data[i].passengers + "</td>";
 				content+="<td>" + data[i].totalPrice + "</td>";
 				content+="<td>" + data[i].status + "</td></tr>";

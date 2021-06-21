@@ -142,7 +142,7 @@ public class TrainDAO {
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("Unable to Delete Train");
+			throw new DBException("Train is already booked by the user. So, Unable to delete Train");
 		} finally {
 			// Closing the Connection
 			ConnectionUtil.close(pst, connection);

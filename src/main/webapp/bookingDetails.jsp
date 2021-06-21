@@ -4,6 +4,8 @@
 <%@page import="in.mani.model.Ticket"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +20,16 @@
 	    <br><h3 class="text-center">BOOKING DETAILS</h3><br/>
 		<%
 			TicketDTO ticket = (TicketDTO)request.getAttribute("BOOKING_DETAILS");
-			TrainDTO train = ticket.getTrain();						
+			TrainDTO train = ticket.getTrain();		
+			 LocalDate date = ticket.getJourneyDate();
+			 String journeyDate = date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 		%>
 		<table class="table table-bordered">
 		<caption>Showing Booking Details</caption>
 		<tbody>
 		<tr><td>TRAIN NUMBER</td> <td><%=train.getTrainNumber()%></td> </tr>
 		<tr><td>TRAIN NAME</td> <td><%=train.getTrainName()%></td> </tr>
-		<tr><td>JOURNEY DATE (YYYY-MM-DD)</td> <td> <%=ticket.getJourneyDate()%></td> </tr>
+		<tr><td>JOURNEY DATE</td> <td> <%=journeyDate%></td> </tr>
 		<tr><td>JOURNEY TIME</td> <td> <%=ticket.getJourneyTime()%></td> </tr>
 		<tr><td>PASSENGERS NAME</td> <td> <%= ticket.getPassengers()%></td></tr>
 		<tr><td>TOTAL TICKETS</td> <td> <%=ticket.getNoOfTickets()%></td> </tr>

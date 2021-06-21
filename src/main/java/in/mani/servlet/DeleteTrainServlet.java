@@ -28,10 +28,10 @@ public class DeleteTrainServlet extends HttpServlet {
 			int trainNumber = Integer.parseInt(request.getParameter("trainNumber"));
 			TrainDetailSevices.deleteTrain(trainNumber, trainName);
 			String infoMessage = "Successfully Deleted Train";
-			response.sendRedirect("trainList.jsp?infoMessage=" + infoMessage);
+			response.sendRedirect("trainlist.jsp?infoMessage=" + infoMessage);
 		} catch (Exception e) {
 			String errorMessage = e.getMessage();
-			response.sendRedirect("trainList.jsp?errorMessage=" + errorMessage);
+			response.sendRedirect("trainlist.jsp?errorMessage=" + errorMessage);
 		}
 	}
 }
